@@ -475,7 +475,7 @@ html,body{height:100%}
 .trophy:not(.on) .ic svg{opacity:.6}
 .trophy.on .ic{background:linear-gradient(150deg,#FFE29A,#FFB23E);color:#5A3A00}
 .trophy.on i{color:var(--fire)}
-@media (prefers-reduced-motion:reduce){.card.minting,.mint .burst,.card.big .holo,.card.big.t-grail{animation:none}.card.big{transition:none}}
+@media (prefers-reduced-motion:reduce){.vf-msg .pillmsg{animation:none}.card.minting,.mint .burst,.card.big .holo,.card.big.t-grail{animation:none}.card.big{transition:none}}
 
 /* Camera zoom (pinch or 1x/2x/5x) and live-only scanning */
 .vf.live{touch-action:none}
@@ -484,12 +484,27 @@ html,body{height:100%}
 .zoom[hidden]{display:none}
 .zoom button{min-width:40px;height:34px;padding:0 8px;border-radius:999px;color:#fff;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
 .zoom button[aria-pressed="true"]{background:rgba(255,255,255,.16);color:#FFD34D;font-size:13px}
-.vf.live .vf-msg{bottom:78px}
+.vf-msg{top:calc(70px + env(safe-area-inset-top,0px));bottom:auto}
+.vf-msg .pillmsg{animation:hintout .6s ease 3.5s forwards}
+@keyframes hintout{to{opacity:0;transform:translateY(-6px)}}
+/* Camera controls: last card on the left, the shutter in the middle, nothing else */
+.controls{padding:16px 28px 12px}
+.lastcard{justify-self:start;width:48px;height:48px;border-radius:12px;padding:0;background:#1A1421;box-shadow:0 0 0 2px var(--c,rgba(255,255,255,.25));overflow:hidden}
+.lastcard .ico{display:block;width:100%;height:100%}
+.lastcard .crop{width:100%;height:100%;border-radius:0}
+.lastcard:active{transform:scale(.94)}
+.shutter{width:74px;height:74px;border-width:3px;box-shadow:0 0 0 6px rgba(255,255,255,.08)}
+.shutter span{width:58px;height:58px}
+.shutter:not(.busy):active span{background:var(--fire)}
 .camask .live-only{display:block;margin-top:10px;font-size:12px;font-weight:700;color:rgba(255,255,255,.7)}
 /* Found online */
 .found{display:flex;flex-wrap:wrap;gap:6px}
 .found .chip{text-decoration:none;font-size:13px}
 .gsugg{display:block;width:100%;height:64px;border:0;border-radius:12px;background:transparent;color-scheme:normal}
+/* Me > Last scan details */
+.diag{margin-top:14px;font-size:12px;color:var(--muted)}
+.diag summary{cursor:pointer;font-weight:700;padding:6px 0}
+.diag pre{margin:6px 0 0;padding:10px 12px;border-radius:var(--r);background:var(--surface);color:var(--ink);white-space:pre-wrap;word-break:break-word;font:11.5px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
 
 </style>
 </head>
@@ -507,9 +522,9 @@ html,body{height:100%}
       <div class="scanning" id="scanning" hidden><i class="line"></i><span class="chip">Identifying… <button data-act="scanstop">Cancel</button></span></div>
     </div>
     <div class="controls">
-      <button class="side" data-tab="hunts" aria-label="Today’s hunt"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9"/></svg></span>Hunt</button>
+      <button class="lastcard" id="lastspot" data-tab="vault" aria-label="Your last card, in the Vault"><span class="ico" id="lastthumb"></span></button>
       <button class="shutter" id="shutter" data-act="shoot" aria-label="Open the camera"><span></span></button>
-      <button class="side" id="lastspot" data-tab="vault" aria-label="Your cards"><span class="ico" id="lastthumb"></span>Last card</button>
+      <span aria-hidden="true"></span>
     </div>
   </section>
   <main class="screen" id="screen"></main>
@@ -523,6 +538,6 @@ html,body{height:100%}
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script src="app.js?v=9547d6cd"></script>
+<script src="app.js?v=81ea70e1"></script>
 </body>
 </html>
