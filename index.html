@@ -505,6 +505,16 @@ html,body{height:100%}
 .diag{margin-top:14px;font-size:12px;color:var(--muted)}
 .diag summary{cursor:pointer;font-weight:700;padding:6px 0}
 .diag pre{margin:6px 0 0;padding:10px 12px;border-radius:var(--r);background:var(--surface);color:var(--ink);white-space:pre-wrap;word-break:break-word;font:11.5px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
+/* "Not right? Fix it" */
+.fixbtn{align-self:center;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);background:none}
+.fixbtn b{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.fixwas{display:flex;align-items:center;gap:12px;padding:10px;border-radius:var(--r);background:var(--soft)}
+.fixart{flex:none;width:64px}
+.fixart .crop{display:block;width:100%;border-radius:10px}
+.fixwas>span:last-child{display:flex;flex-direction:column;min-width:0;font-size:13px;color:var(--muted)}
+.fixwas small{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.fixwas b{font-size:16px;color:var(--ink)}
+.field small{font-weight:600}
 
 </style>
 </head>
@@ -538,7 +548,7 @@ html,body{height:100%}
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="81ea70e1";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=81ea70e1"></script>
+<script>(function(){var V="1ede19de";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=1ede19de"></script>
 </body>
 </html>
