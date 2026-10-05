@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B080F">
-<meta name="description" content="Spot expensive clothes and shoes. Scan a piece to see its brand, model, value and rarity.">
+<meta name="description" content="Spot expensive clothes and shoes. Scan a piece to mint a card with its brand, value and rarity, then hunt for grails.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -332,6 +332,151 @@ html,body{height:100%}
 .fine{margin:0;color:var(--muted);font-size:12px}
 .profile .av svg{width:38px;height:38px;color:#fff}
 
+/* Card game: 7 rarity tiers, minted cards, Vault, Hunts, trophies. Five tabs: Vault, Dex, Scan, Hunts, Me. */
+.phone{--common:#A49AB0;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A}
+.phone[data-look="light"]{--common:#7A7086;--uncommon:#1F9D6B;--rare:#2C93D8;--epic:#7A3CFF;--legendary:#D9861A;--mythic:#E0335C;--grail:#B8892A}
+.phone[data-look="light"] .rar{color:#fff}
+.phone[data-look="light"] .rar[style*="grail"],.phone[data-look="light"] .rar[style*="legendary"]{color:#1E1726}
+.tabs{grid-template-columns:repeat(5,1fr)}
+.tab{position:relative}
+.tab .dot{position:absolute;top:2px;left:calc(50% + 8px);width:9px;height:9px;border-radius:50%;background:var(--fire);box-shadow:0 0 0 2px var(--bg)}
+.muted{color:var(--muted)}
+.stats b.tname{font-size:21px;line-height:28px;text-transform:uppercase}
+.ptspill b{margin:0 1px}
+
+/* The card. Sizes are in em so one design scales from the big reveal to the small Vault grid. */
+.card{--common:#A49AB0;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;
+  position:relative;display:block;width:100%;border-radius:1.1em;padding:.42em;color:#fff;text-align:left;isolation:isolate;overflow:hidden;
+  background:linear-gradient(155deg,color-mix(in srgb,var(--c) 72%,#fff),color-mix(in srgb,var(--c) 62%,#000) 55%,color-mix(in srgb,var(--c) 85%,#fff));
+  box-shadow:0 .9em 1.8em -.9em color-mix(in srgb,var(--c) 75%,transparent),0 0 0 1px rgba(0,0,0,.35)}
+.card-in{position:relative;border-radius:.78em;padding:.62em .62em .55em;display:flex;flex-direction:column;gap:.5em;
+  background:radial-gradient(130% 75% at 50% 22%,color-mix(in srgb,var(--c) 28%,#17111D),#0B0810 78%)}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5em;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.06em;line-height:1}
+.card-top .tier{color:var(--c);font-size:1.3em}
+.card-top .no{color:rgba(255,255,255,.62);font-size:1em}
+.art{position:relative;aspect-ratio:1;border-radius:.6em;overflow:hidden;background:#000;box-shadow:0 0 0 .16em color-mix(in srgb,var(--c) 80%,transparent)}
+.art .crop{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;background:#000}
+.art img{filter:contrast(1.08) saturate(1.12)}
+.art::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(85% 85% at 50% 42%,transparent 55%,rgba(0,0,0,.5)),linear-gradient(180deg,rgba(255,255,255,.14),transparent 32%)}
+.card-name{min-width:0}
+.card-name b{display:block;font-family:var(--display);font-weight:900;font-size:1.7em;line-height:.95;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-name span{display:block;margin-top:.25em;font-size:.86em;font-weight:600;color:rgba(255,255,255,.78);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-stats{display:grid;grid-template-columns:1fr .9fr 1.25fr;gap:.35em}
+.card-stats span{display:flex;flex-direction:column;min-width:0;padding:.38em .5em;border-radius:.5em;background:rgba(255,255,255,.08)}
+.card-stats small{font-size:.6em;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.card-stats b{font-family:var(--display);font-weight:900;font-size:1.12em;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-foot{display:flex;justify-content:space-between;align-items:baseline;gap:.5em;font-size:.68em;font-weight:700;color:rgba(255,255,255,.55)}
+.card-foot span:first-child{font-family:var(--display);font-weight:900;font-size:1.45em;color:#fff;text-transform:uppercase;letter-spacing:.04em}
+.card-foot i{font-style:normal;color:var(--fire)}
+/* Small cards in grids: value only */
+.card.mini{font-size:9px}
+.card.mini .card-stats{grid-template-columns:1fr}
+.card.mini .card-stats span:not(:first-child),.card.mini .card-foot{display:none}
+.card.mini .card-stats span{flex-direction:row;justify-content:space-between;align-items:baseline}
+/* Foil from Epic up; stronger for Legendary and Mythic; Grail gets a moving rainbow frame */
+.card .holo,.card .glare{position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit}
+.card .holo{background:linear-gradient(115deg,transparent 22%,rgba(255,0,200,.55) 36%,rgba(0,220,255,.55) 47%,rgba(255,240,0,.5) 58%,transparent 72%);background-size:260% 260%;background-position:30% 30%;mix-blend-mode:color-dodge;opacity:.22}
+.card .glare{background:radial-gradient(circle at var(--mx,28%) var(--my,18%),rgba(255,255,255,.38),transparent 48%);mix-blend-mode:overlay;opacity:.75}
+.t-legendary .holo,.t-mythic .holo{opacity:.34}
+.t-grail{background:linear-gradient(135deg,#FFE29A,#FF9AD5 25%,#9AD0FF 50%,#B8FFCF 75%,#FFE29A);background-size:300% 300%}
+.t-grail .holo{opacity:.45}
+.card.big{font-size:16px;width:min(300px,100%);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;touch-action:pan-y}
+.card.big .holo{animation:holo 5s ease-in-out infinite alternate}
+.card.big.t-grail{animation:grail 6s linear infinite}
+@keyframes holo{from{background-position:0% 0%}to{background-position:100% 100%}}
+@keyframes grail{from{background-position:0% 50%}to{background-position:300% 50%}}
+.cardbtn{display:block;width:100%;text-align:left;border-radius:1.1em}
+.cardbtn:active .card{transform:scale(.97)}
+
+/* Minting */
+.mint{position:relative;display:grid;place-items:center;padding:6px 0 2px;perspective:900px}
+.mint .burst{position:absolute;inset:6% 12%;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,transparent 65%);filter:blur(22px);opacity:.5;animation:burst 1.3s ease-out backwards;pointer-events:none}
+.card.minting{animation:mintin .95s cubic-bezier(.2,.9,.25,1.15) backwards}
+@keyframes mintin{0%{transform:perspective(900px) rotateY(160deg) scale(.55);opacity:0}55%{opacity:1}100%{transform:perspective(900px) rotateY(0) scale(1)}}
+@keyframes burst{0%{transform:scale(.3);opacity:0}40%{opacity:.9}100%{transform:scale(1);opacity:.5}}
+.mint-xp{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px}
+.mint-xp b{font-family:var(--display);font-size:32px;font-weight:900;line-height:1;color:var(--fire);margin-right:4px}
+.mint-xp span,.kv>span.tg{font-size:12px;font-weight:800;padding:4px 8px;border-radius:6px;background:var(--soft)}
+.unlock{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-lg);background:color-mix(in oklab,var(--fire) 14%,var(--surface))}
+.unlock svg.i{color:var(--fire)}
+.unlock b{display:block;font-size:14px}
+.unlock small{color:var(--muted);font-size:12px}
+.minirow{display:flex;gap:10px;overflow-x:auto;margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none}
+.minirow::-webkit-scrollbar{display:none}
+.minirow .cardbtn{flex:none;width:128px}
+.minirow .card.mini{font-size:7px}
+
+/* Vault */
+.lvlcard{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--surface);border-radius:var(--r-lg);padding:12px 14px;margin-top:6px}
+.lvlcard .lv{width:58px;height:58px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--accent),var(--fire));color:#fff}
+.lvlcard .lv b{font-family:var(--display);font-size:30px;font-weight:900;line-height:.9}
+.lvlcard .lv small{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.85}
+.lvlcard .t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lvlcard .t>b{font-family:var(--display);font-size:24px;font-weight:900;text-transform:uppercase;line-height:1}
+.lvlcard .t small{color:var(--muted);font-size:12px;font-weight:700}
+.chiprow{display:flex;gap:6px;overflow-x:auto;margin:14px -16px 0;padding:0 16px 2px;scrollbar-width:none}
+.chiprow::-webkit-scrollbar{display:none}
+.chiprow .chip{white-space:nowrap}
+.tchip{box-shadow:inset 3px 0 0 var(--c)}
+.tchip[aria-pressed="true"]{background:var(--c);color:#140F19;box-shadow:none}
+.sortrow{display:flex;justify-content:space-between;align-items:center;margin:12px 0 10px;color:var(--muted);font-size:13px;font-weight:700}
+.sortrow .chip{padding:6px 10px;font-size:13px}
+.vault{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px}
+@media (min-width:430px){.phone .vault .card.mini{font-size:10px}}
+.tiers7{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tiers7 div{background:var(--surface);border-radius:var(--r);padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;border-top:3px solid var(--c)}
+.tiers7 b{font-family:var(--display);font-size:24px;font-weight:900;line-height:1}
+.tiers7 small{font-size:10px;font-weight:800;text-transform:uppercase;color:var(--muted)}
+.bestrow{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:center}
+.bestrow .card.mini{font-size:7px}
+.bestrow>span{display:flex;flex-direction:column;gap:4px;min-width:0}
+.bestrow>span>b:first-child{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;line-height:1}
+.bestrow small{color:var(--muted);font-size:13px}
+.bestrow .v{font-family:var(--display);font-size:30px;font-weight:900}
+
+/* Hunts */
+.top .streak{display:inline-flex;align-items:center;gap:4px;color:var(--fire)}
+.top .streak svg.i{width:16px;height:16px}
+.hunt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hcard{display:flex;flex-direction:column;gap:5px;text-align:left;background:var(--surface);border-radius:var(--r-lg);padding:8px;border-top:3px solid var(--c);min-width:0}
+.hcard .sil{background:var(--soft)}
+.hcard .brand{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hcard .row{display:flex;flex-direction:column;gap:4px}
+.hcard .row b{font-family:var(--display);font-size:20px;font-weight:900;line-height:1}
+.hcard .rar{font-size:11px;padding:1px 6px}
+.hcard.got{background:color-mix(in oklab,var(--c) 18%,var(--surface))}
+.quests{display:flex;flex-direction:column;gap:8px}
+.quest{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:var(--surface);border-radius:var(--r-lg);padding:12px 14px}
+.quest .t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.quest .t b{font-size:14px}
+.quest .t small{color:var(--muted);font-size:12px;font-weight:700}
+.quest .rew{font-family:var(--display);font-size:18px;font-weight:900;color:var(--muted);white-space:nowrap}
+.quest .btn{padding:9px 12px;font-size:14px}
+.quest .ok{width:30px;height:30px;border-radius:50%;background:var(--safe);color:#fff;display:grid;place-items:center}
+.quest .ok svg.i{width:17px;height:17px;stroke-width:3}
+.quest.done{box-shadow:inset 0 0 0 2px var(--fire)}
+.quest.claimed{opacity:.7}
+.quest.bonus{background:color-mix(in oklab,var(--accent) 14%,var(--surface))}
+.season{display:flex;flex-direction:column;gap:10px;background:var(--surface);border-radius:var(--r-lg);padding:14px}
+.season .row{display:flex;justify-content:space-between;align-items:center}
+.season .row>b{font-family:var(--display);font-size:28px;font-weight:900;line-height:1}
+.season small{color:var(--muted);font-size:12px;font-weight:600}
+.stier{font-family:var(--display);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:6px;color:#140F19}
+.stier.s0{background:#C98C5A}.stier.s1{background:#C9CED6}.stier.s2{background:#F2C14E}.stier.s3{background:#9FE3E0}.stier.s4{background:linear-gradient(135deg,#9AD0FF,#E6B8FF)}
+.soon{display:flex;gap:8px;align-items:flex-start;margin:0;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.soon svg.i{width:18px;height:18px;flex:none}
+.trophies{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trophy{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;background:var(--surface);border-radius:var(--r-lg);padding:12px 6px 10px;min-width:0}
+.trophy .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--muted)}
+.trophy b{font-size:12px;line-height:1.15}
+.trophy small{font-size:10.5px;color:var(--muted);line-height:1.25}
+.trophy i{font-style:normal;font-size:10px;font-weight:800;color:var(--muted)}
+.trophy:not(.on){opacity:.62}
+.trophy:not(.on) .ic svg{opacity:.6}
+.trophy.on .ic{background:linear-gradient(150deg,#FFE29A,#FFB23E);color:#5A3A00}
+.trophy.on i{color:var(--fire)}
+@media (prefers-reduced-motion:reduce){.card.minting,.mint .burst,.card.big .holo,.card.big.t-grail{animation:none}.card.big{transition:none}}
+
 </style>
 </head>
 <body>
@@ -349,14 +494,15 @@ html,body{height:100%}
     <div class="controls">
       <label class="side" for="scanup"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></span>Upload</label>
       <button class="shutter" id="shutter" data-act="shoot" aria-label="Open the camera"><span></span></button>
-      <button class="side" id="lastspot" data-tab="spots" aria-label="Your last spot"><span class="ico" id="lastthumb"></span>Last spot</button>
+      <button class="side" id="lastspot" data-tab="vault" aria-label="Your cards"><span class="ico" id="lastthumb"></span>Last card</button>
     </div>
   </section>
   <main class="screen" id="screen"></main>
   <nav class="tabs" aria-label="Sections">
-    <button class="tab" data-tab="spots"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Spots</button>
+    <button class="tab" data-tab="vault"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="13" height="17" rx="2"/><path d="M4 7v12a2 2 0 0 0 2 2h9"/></svg>Vault</button>
     <button class="tab" data-tab="dex"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 12h16"/><circle cx="12" cy="12" r="2.6"/></svg>Dex</button>
     <button class="tab scan" data-tab="scan"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg>Scan</button>
+    <button class="tab" data-tab="hunts"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9"/></svg>Hunts<i class="dot" id="huntdot" hidden></i></button>
     <button class="tab" data-tab="me"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Me</button>
   </nav>
   <div id="overlay"></div>
@@ -364,6 +510,6 @@ html,body{height:100%}
   <input type="file" id="scancam" accept="image/*" capture="environment" class="vh" tabindex="-1" aria-hidden="true">
   <input type="file" id="scanup" accept="image/jpeg,image/png,image/webp,image/gif" class="vh" tabindex="-1" aria-hidden="true">
 </div>
-<script src="app.js?v=dd5d8b19"></script>
+<script src="app.js?v=958bbd16"></script>
 </body>
 </html>
