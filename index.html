@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B080F">
-<meta name="description" content="Spot expensive clothes and shoes. Scan a piece to mint a card with its brand, value and rarity, then hunt for grails.">
+<meta name="description" content="Spot expensive clothes and shoes with your camera. Summu searches the web to name each piece, mints a card with its brand, value and rarity, then you hunt for grails.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -477,6 +477,20 @@ html,body{height:100%}
 .trophy.on i{color:var(--fire)}
 @media (prefers-reduced-motion:reduce){.card.minting,.mint .burst,.card.big .holo,.card.big.t-grail{animation:none}.card.big{transition:none}}
 
+/* Camera zoom (pinch or 1x/2x/5x) and live-only scanning */
+.vf.live{touch-action:none}
+.vf video{transform-origin:50% 50%;transition:transform .1s ease-out}
+.zoom{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:4;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(20,15,25,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.zoom[hidden]{display:none}
+.zoom button{min-width:40px;height:34px;padding:0 8px;border-radius:999px;color:#fff;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+.zoom button[aria-pressed="true"]{background:rgba(255,255,255,.16);color:#FFD34D;font-size:13px}
+.vf.live .vf-msg{bottom:78px}
+.camask .live-only{display:block;margin-top:10px;font-size:12px;font-weight:700;color:rgba(255,255,255,.7)}
+/* Found online */
+.found{display:flex;flex-wrap:wrap;gap:6px}
+.found .chip{text-decoration:none;font-size:13px}
+.gsugg{display:block;width:100%;height:64px;border:0;border-radius:12px;background:transparent;color-scheme:normal}
+
 </style>
 </head>
 <body>
@@ -489,10 +503,11 @@ html,body{height:100%}
       <div class="cam-top"><span class="logo">Summu<span>.</span></span><button class="ptspill" id="ptspill" data-tab="me"></button></div>
       <div class="frame" id="frame" hidden><i class="c a"></i><i class="c b"></i><i class="c d"></i><i class="c e"></i></div>
       <div class="vf-msg" id="vfmsg"></div>
+      <div class="zoom" id="zoom" role="group" aria-label="Zoom" hidden></div>
       <div class="scanning" id="scanning" hidden><i class="line"></i><span class="chip">Identifying… <button data-act="scanstop">Cancel</button></span></div>
     </div>
     <div class="controls">
-      <label class="side" for="scanup"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></span>Upload</label>
+      <button class="side" data-tab="hunts" aria-label="Today’s hunt"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9"/></svg></span>Hunt</button>
       <button class="shutter" id="shutter" data-act="shoot" aria-label="Open the camera"><span></span></button>
       <button class="side" id="lastspot" data-tab="vault" aria-label="Your cards"><span class="ico" id="lastthumb"></span>Last card</button>
     </div>
@@ -507,9 +522,7 @@ html,body{height:100%}
   </nav>
   <div id="overlay"></div>
   <div id="onb"></div>
-  <input type="file" id="scancam" accept="image/*" capture="environment" class="vh" tabindex="-1" aria-hidden="true">
-  <input type="file" id="scanup" accept="image/jpeg,image/png,image/webp,image/gif" class="vh" tabindex="-1" aria-hidden="true">
 </div>
-<script src="app.js?v=958bbd16"></script>
+<script src="app.js?v=9547d6cd"></script>
 </body>
 </html>
