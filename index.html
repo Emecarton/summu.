@@ -611,7 +611,7 @@ html,body{height:100%}
 @keyframes bgpulse{0%,100%{opacity:.85}50%{opacity:1}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 .v3d-stage{position:absolute;inset:0;touch-action:none}
-.v3d-stage canvas{display:block}
+.v3d-stage iframe{position:absolute;left:0;right:0;top:20%;bottom:22%;width:100%;height:58%;border:0;background:transparent;color-scheme:light}
 .v3d-load{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;color:rgba(255,255,255,.7)}
 .v3d-top{position:relative;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0;pointer-events:none}
 .v3d-top>*{pointer-events:auto}
@@ -654,6 +654,7 @@ html,body{height:100%}
 @media (prefers-reduced-motion:reduce){
   .phone::before,.top h1,.screen>*,.vault .cardbtn,.lvlcard::after,.lvlcard .lv,.prog i,.btn.hot,.shutter,.vault .card.foil .holo,.vault .t-legendary,.vault .t-mythic,.vault .t-grail,.card.big,.art3d,.btn3d::after,.btn3d>svg.i,.sheet,.v3d-bg{animation:none!important}
 }
+.v3d-hint small{font-weight:600;color:rgba(255,255,255,.45)}
 
 </style>
 </head>
@@ -687,7 +688,7 @@ html,body{height:100%}
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="8c3ed6e6";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=8c3ed6e6"></script>
+<script>(function(){var V="c2dce181";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=c2dce181"></script>
 </body>
 </html>
