@@ -516,6 +516,145 @@ html,body{height:100%}
 .fixwas b{font-size:16px;color:var(--ink)}
 .field small{font-weight:600}
 
+/* Alive: colour that moves. Glowing backdrop, gradient headings, cards that shimmer, springy buttons, a glowing tab bar, confetti on mint, and the 3D viewer. */
+.phone{--hot1:#FF5A2E;--hot2:#FF2E8A;--hot3:#8B55FF;--grad:linear-gradient(100deg,var(--hot1),var(--hot2) 48%,var(--hot3))}
+/* Slowly drifting colour blobs behind every tab */
+.phone::before{content:"";position:absolute;inset:-20%;z-index:0;pointer-events:none;opacity:.55;filter:blur(46px);
+  background:radial-gradient(32% 26% at 18% 12%,rgba(139,85,255,.55),transparent 70%),radial-gradient(30% 24% at 88% 30%,rgba(255,46,138,.38),transparent 70%),radial-gradient(34% 28% at 30% 85%,rgba(255,90,46,.32),transparent 70%),radial-gradient(28% 22% at 85% 92%,rgba(58,168,240,.3),transparent 70%);
+  animation:drift 22s ease-in-out infinite alternate}
+.phone[data-look="light"]::before{opacity:.32}
+.phone[data-tab="scan"]::before{display:none}
+.screen,.cam{z-index:1}
+.screen{background:transparent}
+@keyframes drift{0%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(4%,-3%,0) rotate(8deg)}100%{transform:translate3d(-4%,3%,0) rotate(-6deg)}}
+/* Headings get a moving fire-to-violet gradient */
+.top h1{background:linear-gradient(100deg,var(--ink) 0 35%,var(--hot1) 50%,var(--hot2) 62%,var(--hot3) 74%,var(--ink) 90%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s ease-in-out infinite}
+.top h1 span{color:var(--hot1);-webkit-text-fill-color:var(--hot1)}
+@keyframes sheen{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+/* Everything on a tab pops in, one after another */
+.screen>*{animation:popin .45s cubic-bezier(.2,.9,.3,1.25) both}
+.screen>*:nth-child(2){animation-delay:.04s}.screen>*:nth-child(3){animation-delay:.08s}.screen>*:nth-child(4){animation-delay:.12s}.screen>*:nth-child(5){animation-delay:.16s}.screen>*:nth-child(6){animation-delay:.2s}.screen>*:nth-child(n+7){animation-delay:.24s}
+.vault .cardbtn{animation:popin .5s cubic-bezier(.2,.9,.3,1.3) both}
+.vault .cardbtn:nth-child(2){animation-delay:.05s}.vault .cardbtn:nth-child(3){animation-delay:.1s}.vault .cardbtn:nth-child(4){animation-delay:.15s}.vault .cardbtn:nth-child(5){animation-delay:.2s}.vault .cardbtn:nth-child(6){animation-delay:.25s}.vault .cardbtn:nth-child(n+7){animation-delay:.3s}
+@keyframes popin{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+/* Panels: glass with a soft colour edge instead of flat boxes */
+.lvlcard,.stats>div,.quest,.season,.setting,.bcard,.trophy,.hcard,.want,.dexhead,.emptybox,.info,.tiers7 div,.pts-table{
+  background:linear-gradient(160deg,color-mix(in srgb,var(--surface) 82%,transparent),color-mix(in srgb,var(--surface) 62%,transparent));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 10px 24px -18px rgba(0,0,0,.7)}
+.phone[data-look="light"] .lvlcard,.phone[data-look="light"] .stats>div,.phone[data-look="light"] .quest,.phone[data-look="light"] .season,.phone[data-look="light"] .setting,.phone[data-look="light"] .bcard,.phone[data-look="light"] .trophy,.phone[data-look="light"] .hcard,.phone[data-look="light"] .want{box-shadow:inset 0 0 0 1px rgba(30,23,38,.08),0 10px 24px -18px rgba(60,20,90,.35)}
+.lvlcard{position:relative;overflow:hidden}
+.lvlcard::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.1) 50%,transparent 60%);background-size:250% 100%;animation:sheen 5s ease-in-out infinite}
+.lvlcard .lv{background:var(--grad);box-shadow:0 8px 22px -8px rgba(255,46,138,.8);animation:breathe 3.2s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+/* Progress bars: moving stripes in the gradient */
+.prog{position:relative;overflow:hidden}
+.prog i{background:repeating-linear-gradient(115deg,rgba(255,255,255,.22) 0 8px,transparent 8px 16px),var(--grad)!important;background-size:32px 100%,100% 100%!important;animation:stripes 1.1s linear infinite;box-shadow:0 0 12px rgba(255,46,138,.55)}
+@keyframes stripes{to{background-position:32px 0,0 0}}
+/* Buttons spring when pressed; hot buttons glow */
+.btn,.chip,.cardbtn,.bcard,.hcard,.want,.dexp,.tab,.btn3d,.plan{transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .2s,background-color .2s}
+.btn:active,.chip:active,.bcard:active,.hcard:active,.want:active,.dexp:active,.btn3d:active,.plan:active{transform:scale(.95)}
+.btn.hot{background:var(--grad);background-size:160% 100%;box-shadow:0 8px 22px -10px rgba(255,46,138,.9);animation:hotshift 4s ease-in-out infinite}
+@keyframes hotshift{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 1px rgba(255,255,255,.2),0 6px 16px -8px rgba(139,85,255,.9)}
+/* Tab bar: glass, with a glowing pill under the open tab */
+.tabs{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tab svg{transition:transform .3s cubic-bezier(.3,1.7,.5,1)}
+.tab[aria-current="page"] svg{transform:translateY(-2px) scale(1.12);filter:drop-shadow(0 3px 8px rgba(255,46,138,.7))}
+.tab[aria-current="page"]::before{content:"";position:absolute;top:0;left:50%;width:34px;height:3px;margin-left:-17px;border-radius:0 0 4px 4px;background:var(--grad);box-shadow:0 0 12px 2px rgba(255,46,138,.6)}
+.tab.scan svg{color:#fff;background:var(--grad);border-radius:50%;padding:5px;width:33px;height:33px;margin-top:-10px;box-shadow:0 6px 18px -4px rgba(255,46,138,.85)}
+.phone[data-tab="scan"] .tabs{background:#0B080F}
+/* Shutter: a slowly turning colour ring */
+.shutter{position:relative;border-color:transparent!important;background:conic-gradient(from var(--a,0deg),var(--hot1),var(--hot2),var(--hot3),#3AA8F0,var(--hot1));animation:spinring 6s linear infinite}
+.shutter::before{content:"";position:absolute;inset:3px;border-radius:50%;background:#0B080F}
+.shutter span{position:relative}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes spinring{to{--a:360deg}}
+/* Cards: foil keeps moving, top tiers glow and float a little in the Vault */
+.vault .card.foil .holo{animation:holo 6s ease-in-out infinite}
+.vault .t-legendary,.vault .t-mythic,.vault .t-grail{animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 .9em 1.8em -.9em color-mix(in srgb,var(--c) 75%,transparent),0 0 0 1px rgba(0,0,0,.35)}50%{box-shadow:0 .9em 2.6em -.6em color-mix(in srgb,var(--c) 95%,transparent),0 0 1.4em -.2em color-mix(in srgb,var(--c) 60%,transparent)}}
+.card.big{animation:floaty 5s ease-in-out infinite}
+.card.big.minting{animation:mintin .7s cubic-bezier(.2,.9,.3,1.2) both,floaty 5s ease-in-out .7s infinite}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -6px}}
+/* 3D badge on the card art and on mini cards */
+.art3d{position:absolute;right:.5em;bottom:.5em;z-index:4;display:inline-flex;align-items:center;gap:.3em;padding:.35em .65em .35em .5em;border-radius:999px;background:rgba(10,7,14,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-family:var(--display);font-size:1em;font-weight:900;letter-spacing:.06em;box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 70%,transparent),0 0 16px -2px color-mix(in srgb,var(--c) 80%,transparent);animation:pulse3d 2.4s ease-in-out infinite}
+.art3d svg.i{width:1.15em;height:1.15em}
+@keyframes pulse3d{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.has3d{position:absolute;right:.45em;top:.45em;z-index:4;width:2.3em;height:2.3em;border-radius:50%;display:grid;place-items:center;background:rgba(10,7,14,.6);color:#fff;box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 70%,transparent)}
+.has3d svg.i{width:1.4em;height:1.4em}
+.btn3d{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:14px;text-align:left;color:#fff;
+  background:linear-gradient(120deg,#2A1640,#3B1A4A 45%,#4A1C32);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 10px 24px -14px rgba(139,85,255,.9);position:relative;overflow:hidden}
+.btn3d::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.16) 50%,transparent 65%);background-size:250% 100%;animation:sheen 3.5s ease-in-out infinite}
+.btn3d>svg.i{width:34px;height:34px;padding:6px;border-radius:10px;background:var(--grad);flex:none;animation:cubespin 4s ease-in-out infinite}
+@keyframes cubespin{0%,100%{transform:rotate(0)}50%{transform:rotate(-12deg) scale(1.06)}}
+.btn3d span{display:flex;flex-direction:column;min-width:0}
+.btn3d b{font-size:16px}
+.btn3d small{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72)}
+.btn3d.made>svg.i{background:linear-gradient(120deg,#3CC48D,#3AA8F0)}
+/* Making a model */
+.m3dmake{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:8px 0}
+.m3dorb{position:relative;width:170px;height:170px;display:grid;place-items:center}
+.m3dorb .crop3d{position:relative;width:120px;height:120px;border-radius:18px;overflow:hidden;box-shadow:0 0 0 2px var(--c),0 0 30px -4px var(--c);animation:flip3d 2.2s ease-in-out infinite}
+.m3dorb .crop3d .crop{position:absolute;inset:0}
+.m3dorb i{position:absolute;inset:0;border-radius:50%;border:2px solid transparent;border-top-color:var(--c);animation:orbit 1.4s linear infinite}
+.m3dorb i:nth-of-type(2){inset:10px;border-top-color:var(--hot2);animation-duration:2s;animation-direction:reverse}
+.m3dorb i:nth-of-type(3){inset:-8px;border-top-color:var(--hot1);animation-duration:2.8s}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes flip3d{0%,100%{transform:perspective(500px) rotateY(-28deg)}50%{transform:perspective(500px) rotateY(28deg)}}
+.m3dmake>b{font-size:17px}
+.m3dmake small{color:var(--muted);font-size:13px;max-width:280px}
+.m3dbar{width:100%;max-width:280px;height:8px;border-radius:99px;background:var(--soft);overflow:hidden}
+.m3dbar i{display:block;height:100%;width:3%;border-radius:inherit;background:var(--grad);transition:width .4s ease;box-shadow:0 0 12px rgba(255,46,138,.7)}
+/* Viewer: full screen, the piece floats over its rarity colour */
+.v3d{position:absolute;inset:0;z-index:30;color:#fff;background:#07050A;display:flex;flex-direction:column;animation:fadein .3s ease-out}
+.v3d-bg{position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 45%,color-mix(in srgb,var(--c) 38%,transparent),transparent 70%),radial-gradient(60% 40% at 15% 100%,rgba(255,46,138,.22),transparent 70%),radial-gradient(60% 40% at 90% 0,rgba(139,85,255,.25),transparent 70%);animation:bgpulse 5s ease-in-out infinite}
+@keyframes bgpulse{0%,100%{opacity:.85}50%{opacity:1}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.v3d-stage{position:absolute;inset:0;touch-action:none}
+.v3d-stage canvas{display:block}
+.v3d-load{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;color:rgba(255,255,255,.7)}
+.v3d-top{position:relative;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 0;pointer-events:none}
+.v3d-top>*{pointer-events:auto}
+.v3d-top .x{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);font-size:24px;line-height:1;color:#fff}
+.v3d-name{position:relative;padding:10px 16px 0;pointer-events:none}
+.v3d-name b{display:block;font-family:var(--display);font-weight:900;font-size:34px;line-height:.95;text-transform:uppercase;letter-spacing:.02em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+.v3d-name span{display:block;font-weight:600;color:rgba(255,255,255,.8)}
+.v3d-name .v{font-family:var(--display);font-weight:900;font-size:24px;color:var(--c);margin-top:4px}
+.v3d-foot{position:absolute;left:0;right:0;bottom:0;padding:0 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.v3d-foot>*{pointer-events:auto}
+.v3d-hint{margin:0;text-align:center;font-size:13px;font-weight:700;color:rgba(255,255,255,.6)}
+.v3d-new{margin:0 auto;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);font-size:13px;font-weight:800;animation:popin .5s cubic-bezier(.2,.9,.3,1.3) both}
+.v3d-new svg.i{width:16px;height:16px;color:#FFE29A}
+.v3d .btn.ghost{background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(10px)}
+.v3d .btn[aria-pressed="false"]{background:rgba(255,255,255,.12);box-shadow:none;animation:none}
+/* Out of free models */
+.m3dout{display:flex;align-items:center;gap:14px}
+.m3dout .ring{flex:none;width:76px;height:76px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:conic-gradient(var(--hot2) 0deg,var(--soft) 0deg);box-shadow:inset 0 0 0 6px var(--soft)}
+.m3dout .ring b{font-family:var(--display);font-size:28px;line-height:1}
+.m3dout .ring small{font-size:11px;color:var(--muted);font-weight:700}
+.plan{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:14px;border-radius:14px;text-align:left;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.plan span:first-child{display:flex;flex-direction:column;min-width:0}
+.plan b{font-size:16px}
+.plan small{color:var(--muted);font-size:12.5px;font-weight:600}
+.plan.plus{background:linear-gradient(120deg,#3A1F08,#4A1640 55%,#24124A);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,226,154,.45),0 12px 28px -16px rgba(255,178,62,.9)}
+.plan.plus b{background:linear-gradient(90deg,#FFE29A,#FFB23E,#FF9AD5);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:var(--display);font-size:24px;letter-spacing:.03em}
+.plan.plus small{color:rgba(255,255,255,.75)}
+.plan .price{flex:none;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14)}
+.plan .tagfree{flex:none;font-size:12px;font-weight:800;padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--uncommon) 22%,transparent);color:var(--uncommon)}
+.m3drow .meter{flex:none;width:80px;height:8px;border-radius:99px;background:var(--soft);overflow:hidden}
+.m3drow .meter i{display:block;height:100%;background:var(--grad);border-radius:inherit}
+/* Confetti when a card is minted */
+.mint{position:relative}
+.confetti{position:absolute;left:50%;top:42%;width:0;height:0;z-index:6;pointer-events:none}
+.confetti i{position:absolute;width:8px;height:12px;border-radius:2px;opacity:0;animation:conf var(--d) cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.6)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 120px)) rotate(var(--r)) scale(1)}}
+/* Sheets slide up with a little bounce and a glowing top edge */
+.sheet{animation:upbounce .38s cubic-bezier(.2,.9,.3,1.15);box-shadow:0 -1px 0 rgba(255,255,255,.08),0 -20px 50px -20px rgba(139,85,255,.45)}
+@keyframes upbounce{from{transform:translateY(40%);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .phone::before,.top h1,.screen>*,.vault .cardbtn,.lvlcard::after,.lvlcard .lv,.prog i,.btn.hot,.shutter,.vault .card.foil .holo,.vault .t-legendary,.vault .t-mythic,.vault .t-grail,.card.big,.art3d,.btn3d::after,.btn3d>svg.i,.sheet,.v3d-bg{animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -548,7 +687,7 @@ html,body{height:100%}
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="1b9cea3f";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=1b9cea3f"></script>
+<script>(function(){var V="8c3ed6e6";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=8c3ed6e6"></script>
 </body>
 </html>
