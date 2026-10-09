@@ -1,12 +1,12 @@
 {
  "name": "Summu",
  "short_name": "Summu",
- "description": "Spot expensive clothes and shoes.",
+ "description": "Scan clothes and shoes, see what they are worth.",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
- "background_color": "#0B080F",
- "theme_color": "#0B080F",
+ "background_color": "#121212",
+ "theme_color": "#121212",
  "icons": [
   {
    "src": "icon-192.png",

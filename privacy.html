@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121212">
+<title>Privacy · Summu</title>
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&display=swap">
+<style>
+:root{--bg:#F6F4F0;--ink:#1C1C1B;--muted:#5F5B55;--line:#DEDAD3;--hot:#E8481C;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#F2EFEA;--muted:#A19D96;--line:#2F2E2C;--hot:#FF5A2E;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:680px;margin:0 auto;padding:24px 16px 64px}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.logo{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;font-size:28px;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.logo span{color:var(--hot)}
+header a.back{color:var(--muted);font-size:14px;font-weight:700}
+h1{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;font-size:44px;line-height:1;text-transform:uppercase;margin:28px 0 6px}
+.date{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--muted);text-transform:uppercase;margin:0 0 24px}
+h2{font-size:18px;margin:28px 0 6px}
+p,li{color:var(--ink)}
+ul{padding-left:20px}
+a{color:var(--ink);text-underline-offset:3px}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);display:flex;gap:16px}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<header><a class="logo" href="./">Summu<span>.</span></a><a class="back" href="./">Back to the app</a></header>
+<h1>Privacy</h1>
+<p class="date">Last updated 9 October 2026</p>
+<p>Summu is a camera app that names clothes and shoes and turns them into cards. There is no Summu account and no Summu server that stores your stuff. This page says exactly where your data goes.</p>
+
+<h2>What stays on your phone</h2>
+<ul>
+<li>Your cards, the photos you scan, your XP, quests and settings are saved in your browser on this device (IndexedDB and local storage).</li>
+<li>Summu can't see them. If you clear your browser data or tap Start over, they're gone, and we can't get them back.</li>
+<li>Your AI key is saved in this browser only.</li>
+</ul>
+
+<h2>What leaves your phone</h2>
+<ul>
+<li><b>Photos you scan</b> are sent to the AI you picked, using your own key: Google Gemini or Anthropic Claude. They use the photo to name the piece and search the web for its price. Their privacy rules apply to that photo. Google says it may use photos sent with a free Gemini key to improve its products, so scan clothes, not faces.</li>
+<li><b>3D models</b> are searched for and shown from Sketchfab. Sketchfab sees which model you open.</li>
+<li><b>The website itself</b> is hosted on GitHub Pages and loads a font from Google Fonts. Like any website, they see your IP address when the page loads.</li>
+</ul>
+
+<h2>What Summu never does</h2>
+<ul>
+<li>No location. Summu doesn't ask for it or save where you scanned.</li>
+<li>No ads, no trackers, no analytics.</li>
+<li>No selling or sharing your data, because we don't have it.</li>
+</ul>
+
+<h2>Camera</h2>
+<p>Summu only uses the camera while the Scan tab is open, after you allow it. Nothing is recorded. A photo is only taken when you press the shutter.</p>
+
+<h2>Scanning other people</h2>
+<p>Ask before you scan someone else's fit. Point the camera at the clothes, not the face.</p>
+
+<h2>Kids and teens</h2>
+<p>Summu is for people 13 and older. If you're under the age your country sets for using online services on your own, ask a parent first.</p>
+
+<h2>Changes and contact</h2>
+<p>If this page changes, the date at the top changes too. Questions go to <a href="https://github.com/Emecarton/summu./issues">Summu on GitHub</a>.</p>
+
+<footer><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/Emecarton/summu./issues">Contact</a></footer>
+</main>
+</body>
+</html>
