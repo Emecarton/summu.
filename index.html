@@ -638,6 +638,107 @@ html,body{height:100%}
 .links a{font-size:13px;font-weight:700;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 @media (prefers-reduced-motion:reduce){ .m3dorb i::after,.v3d-load .orb i::after,.confetti i{animation:none!important} }
 
+/* Natural: looks like a normal phone app (Instagram, Depop, Vinted). The phone's own font, sentence case, the phone's own
+   greys, grouped rows with soft corners, one orange for the main button. Only the trading cards keep the poster font. */
+.phone{--display:var(--body);--body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --bg:#000;--surface:#1C1C1E;--raise:#2C2C2E;--soft:#1C1C1E;--ink:#F5F5F7;--muted:#8E8E93;--line:#2C2C2E;--accent:#F5F5F7;--accent-ink:#000;--r:12px;--r-lg:14px;
+  font-family:var(--body);letter-spacing:-.005em}
+.phone[data-look="light"]{--bg:#F2F2F7;--surface:#FFFFFF;--raise:#E5E5EA;--soft:#E5E5EA;--ink:#000;--muted:#6C6C70;--line:#D8D8DC;--accent:#000;--accent-ink:#fff}
+.card,.card *{--display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif}
+body{padding:0;gap:0}
+.phone{border-radius:0;box-shadow:none;height:100%;min-height:0}
+@media (min-width:521px){.phone{border-left:1px solid var(--line);border-right:1px solid var(--line)}}
+/* Text: sentence case, normal weights */
+h1,h2,h3,.section-title,.brand,.emptybox b,.lvlcard .t>b,.bestrow>span>b:first-child,.stats b.tname,.wordmark,.logo,.rar,.v3d-top .tag3d,.v3d-name b,.plan.plus b,.how b{text-transform:none!important;letter-spacing:-.015em}
+h1,h2,h3{font-weight:700;line-height:1.1}
+.top{padding:14px 0 8px;align-items:baseline}
+.top h1{font-size:30px}
+.top h1 span{display:none}
+.top small{font-weight:500;font-size:13px}
+.section-title{font-size:20px;font-weight:700;margin:26px 0 10px}
+.section-title small{font-size:13px;font-weight:400}
+.brand{font-weight:600;font-size:14px;letter-spacing:0}
+.stats b,.dexhead .nums b,.tiers7 b,.bestrow .v,.want b,.dexp b,.hcard .row b,.quest .rew,.pts-table b,.lvlcard .lv b,.mint-xp b,.m3dout .ring b,.emptybox b{font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats b{font-size:22px}
+.stats b.tname{font-size:18px;line-height:26px}
+.stats small,.tiers7 small,.lvlcard .lv small{text-transform:none;letter-spacing:0;font-weight:500;font-size:12px}
+.dexhead .nums b{font-size:28px}
+.hcard .row b,.want b{font-size:17px}
+.quest .rew{font-size:15px;color:var(--muted)}
+.mint-xp b{font-size:26px}
+.bestrow .v{font-size:26px}
+.rar{font-weight:600;font-size:12px;letter-spacing:0;padding:2px 7px;border-radius:6px!important}
+.emptybox b{font-size:20px}
+/* Level: a plain number badge, not a loud orange block */
+.lvlcard .lv{background:var(--raise);color:var(--ink);border-radius:12px}
+.lvlcard .lv b{font-size:24px}
+.lvlcard .t>b{font-size:18px;font-weight:700}
+.lvlcard .t small{font-family:var(--body);text-transform:none;font-size:13px;letter-spacing:0}
+/* Panels: grouped rows like the phone's Settings */
+.lvlcard,.stats>div,.quest,.season,.bcard,.trophy,.hcard,.want,.dexhead,.pts-table,.info,.tiers7 div,.how div,.unlock{box-shadow:none!important;border-radius:var(--r-lg)}
+.quest.done{box-shadow:inset 0 0 0 1.5px var(--fire)!important}
+.quest.bonus{background:var(--surface)}
+.unlock{background:var(--surface)}
+.setting{border-bottom:.5px solid var(--line)}
+.prog{border-radius:3px}
+.prog i{border-radius:3px}
+/* Buttons */
+.btn{border-radius:12px;font-weight:600;font-size:16px;text-transform:none;letter-spacing:0}
+.btn.ghost{background:var(--raise);color:var(--ink);box-shadow:none}
+.chip{border-radius:9px!important;font-weight:600;font-size:14px;background:var(--raise)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.mint-xp span{border-radius:7px!important;font-weight:600}
+.btn3d{background:var(--surface);box-shadow:none;border-radius:14px}
+.btn3d>svg.i{border-radius:9px}
+.btn3d b{font-weight:600}
+/* Tab bar: plain icons and labels, the open one in white */
+.tabs{background:var(--bg);border-top:.5px solid var(--line)}
+.tab{font-size:10.5px;font-weight:500;letter-spacing:0}
+.tab[aria-current="page"]::before{display:none}
+.tab.scan svg{color:inherit}
+.phone[data-tab="scan"] .tabs{background:#000;border-top-color:#1C1C1E}
+/* Camera */
+.cam,.vf{background:#000}
+.vf{border-radius:0 0 18px 18px}
+.logo{font-family:var(--body);font-weight:700;font-size:22px;letter-spacing:-.02em}
+.logo span{display:none}
+.ptspill{font-family:var(--body);font-weight:600;border-radius:10px!important;background:rgba(0,0,0,.55)}
+.ptspill b{font-family:var(--body);font-size:15px}
+.pillmsg{font-weight:500;border-radius:10px!important;background:rgba(0,0,0,.55)}
+.zoom{border-radius:12px!important;background:rgba(0,0,0,.5)}
+.zoom button{border-radius:9px!important;font-weight:600}
+/* Sheets */
+.sheet{border-radius:14px 14px 0 0;box-shadow:none}
+.sheet-head h3{font-size:22px}
+/* Welcome */
+.onb-body{padding:40px 20px 16px;gap:18px}
+.wordmark{font-family:var(--body);font-size:22px;font-weight:700;line-height:1;color:var(--muted)}
+.wordmark span{display:none}
+.onb-body h2{font-size:34px;line-height:1.05;letter-spacing:-.03em}
+.onb-body p{font-size:16px}
+.how{gap:8px}
+.how div{background:var(--surface)}
+.how i{background:var(--raise);border-radius:10px}
+.how b{font-size:16px}
+.tierline{display:none}
+/* 3D viewer */
+.v3d{background:#000}
+.v3d-top .tag3d{font-family:var(--body);font-size:18px;font-weight:700}
+.v3d-name b{font-family:var(--body);font-size:24px;font-weight:700;line-height:1.1}
+.v3d-name .v{font-family:var(--body);font-size:22px;font-weight:700}
+.v3d-new{font-family:var(--body);text-transform:none;font-size:13px;letter-spacing:0}
+.v3d-hint{font-family:var(--body);text-transform:none;font-size:12px;letter-spacing:0;border-radius:10px}
+.v3d-frame{border-radius:16px}
+.v3d-stage{border-radius:14px}
+/* No typewriter labels */
+.phone{--mono:var(--body)}
+.lvlcard .t small,.quest .t small,.season small,.sortrow>span,.top small,.legal small,.m3dout .ring small,.plan .price,.plan .tagfree,.stier,.v3d-new{font-family:var(--body)!important;text-transform:none!important;letter-spacing:0!important;font-size:13px}
+.quest .t small,.sortrow>span{font-size:12.5px;font-weight:500}
+.stier{font-weight:700;font-size:15px;border-radius:8px!important}
+.profile .av{background:var(--raise)!important;color:var(--muted)!important}
+.profile h2{font-size:28px}
+.setting{background:none!important;box-shadow:none!important;border-radius:0!important;border-bottom:.5px solid var(--line)}
+
 </style>
 </head>
 <body>
