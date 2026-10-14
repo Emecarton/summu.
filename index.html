@@ -13,7 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
-<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&display=swap">
 <style>
 /* Layout: a phone-sized app that opens on the camera. Five tabs (Spots, Dex, Scan, Ranks, Me) with the shutter in the middle; the camera fills the phone on the Scan tab and the other tabs scroll above the tab bar. Dark by default, light look in Me. */
 :root{
@@ -637,128 +638,6 @@ html,body{height:100%}
 .links a{font-size:13px;font-weight:700;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 @media (prefers-reduced-motion:reduce){ .m3dorb i::after,.v3d-load .orb i::after,.confetti i{animation:none!important} }
 
-/* Street tag: Archivo (wide for headings, normal for text) and JetBrains Mono for labels and prices, like a resale tag.
-   Lists are split by hairlines instead of sitting in rounded boxes. The app fills the window instead of sitting in a fake phone. */
-@font-face{font-family:"Archivo";font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(fonts/archivo-latin.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"Archivo";font-style:normal;font-display:swap;font-weight:100 900;font-stretch:62% 125%;src:url(fonts/archivo-latin-ext.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:"JetBrains Mono";font-style:normal;font-display:swap;font-weight:100 800;src:url(fonts/jetbrains-mono-latin.woff2) format("woff2-variations")}
-:root{--display:"Archivo","Arial Black",sans-serif;--body:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.phone{--mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;--wide:125%}
-/* The app fills the window: no phone mock-up on a computer, just a centred column with edges */
-body{padding:0;gap:0;height:100dvh}
-.phone{border-radius:0;box-shadow:none;height:100dvh;max-width:440px;min-height:0;border-left:1px solid var(--line);border-right:1px solid var(--line)}
-@media (max-width:440px){.phone{border:0}}
-/* Headings: wide, heavy, tight */
-h1,h2,h3{font-family:var(--display);font-stretch:var(--wide);font-weight:800;letter-spacing:-.025em;line-height:.95}
-.top{flex-direction:column;align-items:flex-start;gap:6px;padding:20px 0 14px;border-bottom:1px solid var(--ink)}
-.top h1{font-size:40px}
-.top h1 span{display:none}
-.top small,.top .streak{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:0}
-.top .streak{color:var(--hot)}
-/* Section titles: a mono label with a rule, like a spec sheet */
-.section-title{font-family:var(--mono);font-stretch:100%;font-size:11px;font-weight:600;letter-spacing:.08em;line-height:1;margin:28px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);color:var(--ink)}
-.section-title small{font-family:var(--mono);font-size:11px;font-weight:400;text-transform:uppercase;letter-spacing:.04em}
-/* Numbers and labels in mono */
-.stats small,.tiers7 small,.dexhead .nums small,.bcard .row small,.lvlcard .t small,.quest .t small,.season small,.trophy small,.trophy i,.sortrow>span,.lock,.want small,.hcard .brand,.bcard .brand,.want .brand{font-family:var(--mono);letter-spacing:.02em}
-.stats small,.tiers7 small,.dexhead .nums small,.lvlcard .t small,.sortrow>span,.lock,.trophy i{text-transform:uppercase;font-size:10.5px;font-weight:500}
-.stats b,.dexhead .nums b,.tiers7 b,.bestrow .v,.want b,.dexp b,.hcard .row b,.quest .rew,.pts-table b,.ptspill b,.lvlcard .lv b,.mint-xp b,.m3dout .ring b{font-family:var(--mono);font-stretch:100%;font-weight:700;letter-spacing:-.02em}
-/* Boxes become ruled rows */
-.lvlcard,.stats>div,.quest,.season,.setting,.dexhead,.emptybox,.pts-table,.how div,.info{background:none!important;box-shadow:none!important;border-radius:0!important}
-.lvlcard{padding:14px 0;border-bottom:1px solid var(--line);margin-top:0}
-.lvlcard .lv{width:52px;height:52px;border-radius:0}
-.lvlcard .t>b{font-stretch:var(--wide);font-size:20px;letter-spacing:-.02em}
-.lvlcard .prog,.dexhead .prog,.quest .prog,.bcard .prog,.season .prog{height:3px;border-radius:0;background:var(--line)}
-.prog i{border-radius:0}
-.stats{gap:0;margin:0;border-bottom:1px solid var(--line)}
-.stats>div{padding:12px 12px 12px 0}
-.stats>div+div{padding-left:12px;border-left:1px solid var(--line)}
-.stats b{font-size:24px}
-.stats b.tname{font-family:var(--display);font-stretch:var(--wide);font-size:18px}
-.dexhead{padding:14px 0;margin:0;border-bottom:1px solid var(--line)}
-.dexhead .nums b{font-size:30px}
-.quests{gap:0}
-.quest{padding:14px 0;border-bottom:1px solid var(--line)}
-.quest .t b{font-size:15px;font-weight:600}
-.quest.done{box-shadow:inset 3px 0 0 var(--hot)!important;padding-left:12px}
-.quest .ok{border-radius:0}
-.season{padding:12px 0;border-bottom:1px solid var(--line)}
-.setting{padding:14px 0}
-.pts-table{padding:0}
-.info{padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px}
-/* Tiles: square, outlined, like a shop grid */
-.bcard,.hcard,.trophy,.tiers7 div{background:none!important;border-radius:0!important;box-shadow:inset 0 0 0 1px var(--line)!important}
-.tiers7 div{border-top:3px solid var(--c)}
-.hcard{border-top:3px solid var(--c)}
-.hcard.got{background:color-mix(in oklab,var(--c) 14%,transparent)!important}
-.bcard .peek .sil,.hcard .sil,.want .sil,.dexp .sil{border-radius:0}
-.trophy .ic{border-radius:0}
-/* Buttons: wide uppercase labels, square */
-.btn{border-radius:0;font-family:var(--display);font-stretch:var(--wide);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:14px}
-.btn.ghost{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.chip{border-radius:0!important;background:none;box-shadow:inset 0 0 0 1px var(--line);font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.03em}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:none}
-.rar{border-radius:0!important;font-family:var(--mono);font-stretch:100%;font-weight:700;font-size:11px;letter-spacing:.04em;padding:2px 6px}
-/* Tab bar: words, not icons; the scan button is an orange square */
-.tabs{padding:0 0 env(safe-area-inset-bottom,0px);border-top:1px solid var(--line);align-items:stretch}
-.tab{justify-content:center;gap:0;padding:16px 0 18px;font-family:var(--display);font-stretch:var(--wide);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
-.tab svg{display:none}
-.tab[aria-current="page"]{color:var(--ink)}
-.tab[aria-current="page"]::before{top:-1px;left:22%;right:22%;width:auto;margin:0;height:2px}
-.tab.scan{font-size:0;padding:8px 0}
-.tab.scan svg{display:block;width:44px;height:44px;padding:11px;background:var(--hot);color:#fff;margin:auto}
-.tab.scan[aria-current="page"]::before{display:none}
-.tab .dot{top:12px;left:auto;right:14%;border-radius:0;width:6px;height:6px;box-shadow:none}
-.phone[data-tab="scan"] .tabs{border-top-color:#222}
-.phone[data-tab="scan"] .tab[aria-current="page"]{color:#fff}
-/* Camera */
-.logo{font-family:var(--display);font-stretch:var(--wide);font-weight:800;font-size:22px;letter-spacing:-.03em}
-.ptspill{border-radius:0!important;font-family:var(--mono);font-weight:500;font-size:11px;text-transform:uppercase;background:rgba(12,12,12,.7)}
-.ptspill b{font-size:15px}
-.pillmsg{font-family:var(--mono);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
-.zoom,.zoom button{border-radius:0!important;font-family:var(--mono)}
-.frame .c{border-radius:0!important}
-.lastcard{border-radius:0!important}
-.shutter{border-radius:50%}
-/* Sheets */
-.sheet{border-radius:0!important;border-top:1px solid var(--line);box-shadow:none}
-.sheet-head{padding:18px 16px 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
-.sheet-head h3{font-size:22px}
-.sheet-head .x,.sheet-head [data-close]{border-radius:0}
-.reveal{border-radius:0}
-/* Me */
-.profile{align-items:flex-start;text-align:left;padding:20px 0 14px;border-bottom:1px solid var(--ink)}
-.profile .av{display:none}
-.profile h2{font-size:40px}
-.profile .pill{font-family:var(--mono);font-size:11px;text-transform:uppercase;background:none;padding:0;color:var(--muted)}
-.bestrow>span>b:first-child{font-stretch:var(--wide);font-size:20px}
-/* Welcome: numbered steps on rules instead of boxes */
-.onb-body{padding:32px 20px 16px;gap:18px}
-.wordmark{font-stretch:var(--wide);font-size:30px;letter-spacing:-.03em;line-height:1}
-.onb-body h2{font-size:44px;letter-spacing:-.035em}
-.how{gap:0;counter-reset:step;border-top:1px solid var(--ink)}
-.how div{grid-template-columns:34px 1fr;padding:14px 0;border-bottom:1px solid var(--line);counter-increment:step}
-.how i{display:none}
-.how div::before{content:counter(step,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--hot);align-self:start;padding-top:2px}
-.how b{font-family:var(--display);font-stretch:var(--wide);font-size:16px}
-.tierline .rar{margin:0 2px 4px 0}
-/* Cards keep their foil but use the new type */
-.card{font-stretch:100%}
-/* Square everything else that was soft */
-.vf{border-radius:0}
-.sil,.bcard .peek .sil{border-radius:0!important}
-.unlock{border-radius:0;background:none;border-top:1px solid var(--line);padding:12px 0}
-.unlock+.unlock{border-top:1px solid var(--line)}
-.mint-xp span,.kv>span.tg{border-radius:0!important;background:none;box-shadow:inset 0 0 0 1px var(--line);font-family:var(--mono);font-weight:500;text-transform:uppercase;font-size:11px}
-.btn3d,.btn3d>svg.i,.plan,.m3dout .ring,.art3d,.has3d,.v3d-frame,.v3d-stage,.v3d-top .x,.v3d-hint,.m3dorb .crop3d,.v3d-load .orb .crop{border-radius:0!important}
-.btn3d{box-shadow:inset 0 0 0 1px var(--ink);background:none}
-.btn3d b{font-family:var(--display);font-stretch:var(--wide);text-transform:uppercase;font-size:15px}
-.btn3d small{font-family:var(--mono);font-weight:400;font-size:11px}
-.v3d-top .tag3d,.v3d-name b{font-stretch:var(--wide);letter-spacing:-.02em}
-.v3d-name b{font-size:24px}
-.v3d-name .v{font-family:var(--mono);font-stretch:100%;font-size:22px}
-.statusbox,.statusbox button,.targets button,.cam-note:not(:empty),.side .ico{border-radius:0!important}
-.found .chip,.chips span,.stier,.pill,.tchip{border-radius:0!important}
-
 </style>
 </head>
 <body>
@@ -791,7 +670,7 @@ h1,h2,h3{font-family:var(--display);font-stretch:var(--wide);font-weight:800;let
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="a795e921";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=a795e921"></script>
+<script>(function(){var V="65905e2d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=65905e2d"></script>
 </body>
 </html>
