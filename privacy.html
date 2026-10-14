@@ -7,20 +7,19 @@
 <title>Privacy · Summu</title>
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&display=swap">
+<style>@font-face{font-family:"Archivo";font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(fonts/archivo-latin.woff2) format("woff2-variations")}@font-face{font-family:"JetBrains Mono";font-weight:100 800;font-display:swap;src:url(fonts/jetbrains-mono-latin.woff2) format("woff2-variations")}</style>
 <style>
 :root{--bg:#F6F4F0;--ink:#1C1C1B;--muted:#5F5B55;--line:#DEDAD3;--hot:#E8481C;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#F2EFEA;--muted:#A19D96;--line:#2F2E2C;--hot:#FF5A2E;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 main{max-width:680px;margin:0 auto;padding:24px 16px 64px}
 header{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.logo{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;font-size:28px;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.logo{font-family:"Archivo",sans-serif;font-stretch:125%;font-weight:800;font-size:22px;color:var(--ink);text-decoration:none;letter-spacing:-.03em;text-transform:uppercase}
 .logo span{color:var(--hot)}
 header a.back{color:var(--muted);font-size:14px;font-weight:700}
-h1{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;font-size:44px;line-height:1;text-transform:uppercase;margin:28px 0 6px}
-.date{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--muted);text-transform:uppercase;margin:0 0 24px}
+h1{font-family:"Archivo",sans-serif;font-stretch:125%;font-weight:800;font-size:40px;line-height:1;letter-spacing:-.03em;text-transform:uppercase;margin:28px 0 8px;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.date{font-family:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--muted);text-transform:uppercase;margin:0 0 24px}
 h2{font-size:18px;margin:28px 0 6px}
 p,li{color:var(--ink)}
 ul{padding-left:20px}
@@ -33,7 +32,7 @@ footer a{color:var(--muted)}
 <main>
 <header><a class="logo" href="./">Summu<span>.</span></a><a class="back" href="./">Back to the app</a></header>
 <h1>Privacy</h1>
-<p class="date">Last updated 9 October 2026</p>
+<p class="date">Last updated 14 October 2026</p>
 <p>Summu is a camera app that names clothes and shoes and turns them into cards. There is no Summu account and no Summu server that stores your stuff. This page says exactly where your data goes.</p>
 
 <h2>What stays on your phone</h2>
@@ -47,7 +46,7 @@ footer a{color:var(--muted)}
 <ul>
 <li><b>Photos you scan</b> are sent to the AI you picked, using your own key: Google Gemini or Anthropic Claude. They use the photo to name the piece and search the web for its price. Their privacy rules apply to that photo. Google says it may use photos sent with a free Gemini key to improve its products, so scan clothes, not faces.</li>
 <li><b>3D models</b> are searched for and shown from Sketchfab. Sketchfab sees which model you open.</li>
-<li><b>The website itself</b> is hosted on GitHub Pages and loads a font from Google Fonts. Like any website, they see your IP address when the page loads.</li>
+<li><b>The website itself</b> is hosted on GitHub Pages. Like any website host, GitHub sees your IP address when the page loads. Fonts are served from the same place, not from Google.</li>
 </ul>
 
 <h2>What Summu never does</h2>
