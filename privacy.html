@@ -31,19 +31,20 @@ footer a{color:var(--muted)}
 <main>
 <header><a class="logo" href="./">Summu<span>.</span></a><a class="back" href="./">Back to the app</a></header>
 <h1>Privacy</h1>
-<p class="date">Last updated 14 October 2026</p>
-<p>Summu is a camera app that names clothes and shoes and turns them into cards. There is no Summu account and no Summu server that stores your stuff. This page says exactly where your data goes.</p>
+<p class="date">Last updated 15 October 2026</p>
+<p>Summu is a camera app that names clothes and shoes and turns them into cards. There is no Summu account, and Summu doesn't store your stuff anywhere. This page says exactly where your data goes.</p>
 
 <h2>What stays on your phone</h2>
 <ul>
 <li>Your cards, the photos you scan, your XP, quests and settings are saved in your browser on this device (IndexedDB and local storage).</li>
 <li>Summu can't see them. If you clear your browser data or tap Start over, they're gone, and we can't get them back.</li>
-<li>Your AI key is saved in this browser only.</li>
+<li>If you add your own AI key in Me, it's saved in this browser only.</li>
 </ul>
 
 <h2>What leaves your phone</h2>
 <ul>
-<li><b>Photos you scan</b> are sent to the AI you picked, using your own key: Google Gemini or Anthropic Claude. They use the photo to name the piece and search the web for its price. Their privacy rules apply to that photo. Google says it may use photos sent with a free Gemini key to improve its products, so scan clothes, not faces.</li>
+<li><b>Photos you scan</b> go through Summu's scan server (on Cloudflare) to Google Gemini. The server passes the photo on and doesn't keep it. If you added your own key, the photo goes straight to the AI you picked instead (Google Gemini or Anthropic Claude). The AI uses the photo to name the piece and search the web for its price. Their privacy rules apply to that photo. Google says it may use photos sent with a free Gemini key to improve its products, so scan clothes, not faces.</li>
+<li><b>The scan server</b> sees your IP address so it can stop one person from using up everyone's scans. It doesn't save it.</li>
 <li><b>The website itself</b> is hosted on GitHub Pages and loads a font from Google Fonts. Like any website, they see your IP address when the page loads.</li>
 </ul>
 
