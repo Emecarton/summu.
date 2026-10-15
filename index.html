@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-default-look="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#121212">
+<meta name="theme-color" content="#FCF6EE">
 <meta name="description" content="Point your camera at clothes or shoes. Summu names the piece, looks up what it sells for, and saves it as a card.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -13,6 +13,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&display=swap">
 <style>
@@ -744,6 +745,88 @@ h1,h2,h3{font-weight:700;line-height:1.1}
 .profile .av{background:var(--raise)!important;color:var(--muted)!important}
 .profile h2{font-size:28px}
 .setting{background:none!important;box-shadow:none!important;border-radius:0!important;border-bottom:.5px solid var(--line)}
+
+/* Angelic: warm cream and gold by day, warm candlelight by night. Soft serif titles (Fraunces), a sunrise glow at the top
+   of every page, and a thin pastel rainbow on the small things: the open tab, progress, the shutter halo, the level halo. */
+@font-face{font-family:"Fraunces";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/fraunces-latin.woff2) format("woff2-variations")}
+@font-face{font-family:"Fraunces";font-style:italic;font-display:swap;font-weight:100 900;src:url(fonts/fraunces-latin-italic.woff2) format("woff2-variations")}
+.phone{--serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --rainbow:linear-gradient(90deg,#FFB3A7,#FFD3A1,#FBEA9C,#C5E8B7,#AFD8F2,#CDBEF0,#F6B6D2);
+  --halo:conic-gradient(from 200deg,#FFB3A7,#FFD3A1,#FBEA9C,#C5E8B7,#AFD8F2,#CDBEF0,#F6B6D2,#FFB3A7);
+  --fire:#EE8456;--hot:#EE8456;--gold:#C9963A;
+  --bg:#1A1310;--surface:#251B16;--raise:#33261F;--soft:#2B201A;--ink:#FBEFE2;--muted:#B39B87;--line:#3A2C24;--accent:#FBEFE2;--accent-ink:#1A1310;
+  --glow:rgba(255,190,120,.16);--shadow:0 10px 28px -18px rgba(0,0,0,.8)}
+.phone[data-look="light"]{--bg:#FCF6EE;--surface:#FFFDF9;--raise:#F6ECDF;--soft:#F8F0E6;--ink:#3B2B20;--muted:#9A8472;--line:#EFE2D1;--accent:#3B2B20;--accent-ink:#FFFDF9;
+  --fire:#E9794A;--hot:#E9794A;--gold:#B9852C;--glow:rgba(255,196,128,.45);--shadow:0 12px 30px -20px rgba(140,90,40,.45)}
+body{background:var(--bg)}
+/* A sunrise glow behind the top of each page */
+.screen{background:radial-gradient(120% 340px at 50% -60px,var(--glow),transparent 70%) no-repeat,var(--bg)}
+.onb{background:radial-gradient(140% 460px at 50% -80px,var(--glow),transparent 72%) no-repeat,var(--bg)}
+/* Titles: soft serif */
+h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-child,.emptybox b,.v3d-name b{font-family:var(--serif);font-weight:560;letter-spacing:-.01em}
+.top{padding:18px 0 10px}
+.top h1{font-size:34px;font-style:italic;font-weight:500}
+.top small{color:var(--muted)}
+.section-title{font-size:22px;margin:28px 0 12px;position:relative;padding-bottom:9px}
+.section-title::after{content:"";position:absolute;left:0;bottom:0;width:34px;height:3px;border-radius:3px;background:var(--rainbow)}
+.section-title small{font-family:var(--body)}
+.profile h2,.sheet-head h3{font-family:var(--serif);font-weight:560}
+.sheet-head h3{font-size:24px}
+/* Panels: soft paper with a warm shadow */
+.lvlcard,.stats>div,.quest,.season,.bcard,.trophy,.hcard,.want,.dexhead,.pts-table,.info,.tiers7 div,.how div,.unlock,.btn3d,.emptybox{background:var(--surface);border-radius:18px!important;box-shadow:var(--shadow),inset 0 0 0 1px var(--line)!important}
+.emptybox{border:0}
+.setting{border-bottom:1px solid var(--line)}
+/* Level and avatar wear a rainbow halo */
+.lvlcard .lv{position:relative;border-radius:50%;width:58px;height:58px;background:var(--surface);color:var(--ink);box-shadow:0 0 0 3px var(--surface),0 0 18px -2px rgba(255,200,140,.55)}
+.lvlcard .lv::before{content:"";position:absolute;inset:-3px;border-radius:50%;padding:3px;background:var(--halo);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.lvlcard .lv b{font-family:var(--serif);font-weight:600}
+.profile .av{position:relative;background:var(--surface)!important;color:var(--gold)!important;box-shadow:0 0 30px -4px rgba(255,200,140,.6)}
+.profile .av::before{content:"";position:absolute;inset:-4px;border-radius:50%;padding:3px;background:var(--halo);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+/* Progress fills with the rainbow */
+.prog{height:6px;border-radius:6px;background:var(--raise)}
+.prog i{background:var(--rainbow)!important;border-radius:6px}
+.m3drow .meter i{background:var(--rainbow)}
+/* Buttons: warm and rounded, with a soft glow on the main one */
+.btn{border-radius:16px}
+.btn.hot{background:var(--fire);color:#fff;box-shadow:0 10px 24px -12px var(--fire)}
+.btn.ghost{background:var(--raise);color:var(--ink)}
+.chip{border-radius:12px!important;background:var(--raise)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.rar{border-radius:8px!important}
+.quest.done{box-shadow:var(--shadow),inset 0 0 0 1.5px var(--fire)!important}
+.quest .ok{background:var(--gold)}
+.trophy.on .ic{background:linear-gradient(150deg,#FFE7A8,#E7B04E);color:#5A3A00}
+/* Tab bar: warm frosted, the open tab gets a rainbow line */
+.tabs{background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tab{position:relative}
+.tab[aria-current="page"]{color:var(--ink)}
+.tab[aria-current="page"]::before{display:block!important;content:"";position:absolute;top:-6px;left:50%;width:26px;height:3px;margin-left:-13px;border-radius:3px;background:var(--rainbow)}
+.phone[data-tab="scan"] .tabs{background:#120D0A;border-top-color:#2A1F19}
+/* Camera: a rainbow halo around the shutter */
+.cam,.controls{background:#120D0A}
+.logo{font-style:italic;font-weight:500;font-size:24px}
+.shutter{position:relative;border-color:#FFF8EE!important;box-shadow:0 0 26px -2px rgba(255,205,150,.45)}
+.shutter::before{content:"";position:absolute;inset:-8px;border-radius:50%;padding:3px;background:var(--halo);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.9}
+.shutter span{background:#FFF8EE}
+.ptspill,.pillmsg{background:rgba(26,19,16,.6)!important;color:#FBEFE2}
+.zoom{background:rgba(26,19,16,.55)!important}
+/* Sheets open with a rainbow edge */
+.sheet{border-radius:24px 24px 0 0;overflow:hidden}
+.sheet::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--rainbow);z-index:2}
+/* Welcome */
+.wordmark{font-style:italic;font-weight:500;font-size:26px;color:var(--gold)}
+.wordmark::after{content:" ✦";font-style:normal;font-size:.7em;vertical-align:.25em}
+.onb-body h2{font-size:40px;line-height:1.02;font-weight:520;letter-spacing:-.02em}
+.how i{background:var(--raise);color:var(--gold);border-radius:12px}
+/* The mint glow uses the card's own colour, softly */
+.mint .burst{opacity:.35}
+/* Light look: legal links and small text stay readable */
+.phone[data-look="light"] .links a,.phone[data-look="light"] .empty{color:var(--muted)}
+.profile .av svg.i{color:var(--gold);stroke:var(--gold)}
+/* The scanning pill sits on the photo, so it keeps light text in both looks */
+.scanning .chip,.scanning .chip button{color:#FBEFE2!important}
+.scanning .chip{background:rgba(26,19,16,.74)!important}
+.scanning .chip button{background:rgba(255,248,238,.16)!important}
 
 </style>
 </head>
