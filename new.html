@@ -517,6 +517,12 @@ html,body{height:100%}
 .fixwas b{font-size:16px;color:var(--ink)}
 .field small{font-weight:600}
 
+/* Selfie camera switch, right of the shutter */
+.flipcam{justify-self:end;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);color:#fff}
+.flipcam svg.i{width:26px;height:26px}
+.flipcam[aria-pressed="true"]{background:#fff;color:#111}
+.flipcam[hidden]{display:none}
+
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
 .phone{--hot:#FF5A2E;--mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,monospace}
@@ -836,7 +842,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
     <div class="controls">
       <button class="lastcard" id="lastspot" data-tab="vault" aria-label="Your last card, in the Vault"><span class="ico" id="lastthumb"></span></button>
       <button class="shutter" id="shutter" data-act="shoot" aria-label="Open the camera"><span></span></button>
-      <span aria-hidden="true"></span>
+      <button class="flipcam" id="flipcam" data-act="flip" aria-label="Switch to the selfie camera" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><path d="M8.6 13.2a3.4 3.4 0 0 1 6-2.1"/><path d="M15.4 13.8a3.4 3.4 0 0 1-6 2.1"/><path d="M14.8 8.9v2.4h-2.4"/><path d="M9.2 18.1v-2.4h2.4"/></svg></button>
     </div>
   </section>
   <main class="screen" id="screen"></main>
@@ -850,7 +856,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="dc357c5d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=dc357c5d"></script>
+<script>(function(){var V="1baef34f";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=1baef34f"></script>
 </body>
 </html>
