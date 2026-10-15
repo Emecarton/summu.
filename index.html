@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FCF6EE">
 <meta name="description" content="Point your camera at clothes or shoes. Summu names the piece, looks up what it sells for, and saves it as a card.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Summu">
+<meta property="og:title" content="Summu: what are your clothes worth?">
+<meta property="og:description" content="Point your camera at clothes or shoes. Summu names the piece, finds what it sells for, and turns it into a card.">
+<meta property="og:url" content="https://emecarton.github.io/summu./">
+<meta property="og:image" content="https://emecarton.github.io/summu./og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Summu trading cards for clothes">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -522,6 +532,9 @@ html,body{height:100%}
 .flipcam svg.i{width:26px;height:26px}
 .flipcam[aria-pressed="true"]{background:#fff;color:#111}
 .flipcam[hidden]{display:none}
+.installrow{width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.steps{margin:0;padding-left:22px;display:grid;gap:10px;font-size:16px;line-height:1.4}
+.steps svg.i{width:18px;height:18px;vertical-align:-3px}
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -860,7 +873,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="86530124";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=86530124"></script>
+<script>(function(){var V="45a59232";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=45a59232"></script>
 </body>
 </html>
