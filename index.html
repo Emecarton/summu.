@@ -544,6 +544,8 @@ html,body{height:100%}
 .check input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--fire)}
 .check a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 form.onb-body{margin:0}
+.vf-msg .tagmsg{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding-right:6px}
+.tagmsg button{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.16);color:inherit;font:inherit;font-size:13px;font-weight:600}
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -882,7 +884,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="730d54cb";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=730d54cb"></script>
+<script>(function(){var V="3556cf33";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=3556cf33"></script>
 </body>
 </html>
