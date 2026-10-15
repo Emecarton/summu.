@@ -535,6 +535,15 @@ html,body{height:100%}
 .installrow{width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
 .steps{margin:0;padding-left:22px;display:grid;gap:10px;font-size:16px;line-height:1.4}
 .steps svg.i{width:18px;height:18px;vertical-align:-3px}
+/* Sign up */
+.field select{width:100%;padding:12px;border-radius:var(--r);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:16px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.field select:focus{border-color:var(--accent);outline:none}
+.field .hint{font-weight:500;color:var(--muted)}
+.field>span{color:var(--ink);font-size:14px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4;color:var(--ink);cursor:pointer}
+.check input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--fire)}
+.check a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+form.onb-body{margin:0}
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -873,7 +882,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="45a59232";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=45a59232"></script>
+<script>(function(){var V="730d54cb";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=730d54cb"></script>
 </body>
 </html>
