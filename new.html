@@ -823,6 +823,10 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
 /* Light look: legal links and small text stay readable */
 .phone[data-look="light"] .links a,.phone[data-look="light"] .empty{color:var(--muted)}
 .profile .av svg.i{color:var(--gold);stroke:var(--gold)}
+/* The scanning pill sits on the photo, so it keeps light text in both looks */
+.scanning .chip,.scanning .chip button{color:#FBEFE2!important}
+.scanning .chip{background:rgba(26,19,16,.74)!important}
+.scanning .chip button{background:rgba(255,248,238,.16)!important}
 
 </style>
 </head>
@@ -837,7 +841,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
       <div class="frame" id="frame" hidden><i class="c a"></i><i class="c b"></i><i class="c d"></i><i class="c e"></i></div>
       <div class="vf-msg" id="vfmsg"></div>
       <div class="zoom" id="zoom" role="group" aria-label="Zoom" hidden></div>
-      <div class="scanning" id="scanning" hidden><i class="line"></i><span class="chip">Identifying… <button data-act="scanstop">Cancel</button></span></div>
+      <div class="scanning" id="scanning" hidden><i class="line"></i><span class="chip"><span id="scanmsg">Identifying…</span> <button data-act="scanstop">Cancel</button></span></div>
     </div>
     <div class="controls">
       <button class="lastcard" id="lastspot" data-tab="vault" aria-label="Your last card, in the Vault"><span class="ico" id="lastthumb"></span></button>
@@ -856,7 +860,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="e51501cd";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=e51501cd"></script>
+<script>(function(){var V="d594c354";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=d594c354"></script>
 </body>
 </html>
