@@ -31,21 +31,29 @@ footer a{color:var(--muted)}
 <main>
 <header><a class="logo" href="./">Summu<span>.</span></a><a class="back" href="./">Back to the app</a></header>
 <h1>Privacy</h1>
-<p class="date">Last updated 15 October 2026</p>
-<p>Summu is a camera app that names clothes and shoes and turns them into cards. There is no Summu account, and Summu doesn't store your stuff anywhere. This page says exactly where your data goes.</p>
+<p class="date">Last updated 16 October 2026</p>
+<p>Summu is a camera app that names clothes and shoes and turns them into cards. You make an account with a username and password, so your cards are safe and you can log in on any phone. This page says exactly what Summu keeps and where your data goes.</p>
+
+<h2>Your account</h2>
+<ul>
+<li>Summu's server (a Cloudflare database) keeps your username, a scrambled version of your password (a salted hash, so nobody can read the real password, not even us), the year you were born, which terms you accepted, and when you joined.</li>
+<li>It also keeps a copy of your cards, the photos you scanned for them, your XP, quests, trophies and settings, so you can log in on another phone.</li>
+<li>We ask for your birth year only to check you're 13 or older. We don't ask for your name, email or phone number.</li>
+<li>Your account is private. Other people can't see your cards or photos.</li>
+<li><b>Delete account</b> in Me deletes all of this from the server and your phone straight away. Logging out keeps it in your account and removes it from that phone.</li>
+</ul>
 
 <h2>What stays on your phone</h2>
 <ul>
-<li>Your profile (username and the year you were born), your cards, the photos you scan, your XP, quests and settings are saved in your browser on this device (IndexedDB and local storage).</li>
-<li>We ask for your birth year only to check you're 13 or older. We don't ask for your name, email or phone number.</li>
-<li>Summu can't see them. If you clear your browser data or tap Start over, they're gone, and we can't get them back.</li>
+<li>Your cards, photos and settings are also saved in your browser on this device (IndexedDB and local storage), with a log-in token so you stay logged in.</li>
+<li>If your profile is on this phone only (no account), it never leaves the phone. Clearing your browser data or tapping Start over deletes it, and we can't get it back.</li>
 <li>If you add your own scan key in Me, it's saved in this browser only.</li>
 </ul>
 
 <h2>What leaves your phone</h2>
 <ul>
 <li><b>Photos you scan</b> go through Summu's scan server (on Cloudflare) to Google Gemini. The server passes the photo on and doesn't keep it. If you added your own key, the photo goes straight to the service that key is for instead (Google Gemini or Anthropic Claude). The photo is used to name the piece and search the web for its price. Their privacy rules apply to that photo. Google says it may use photos sent with a free Gemini key to improve its products, so scan clothes, not faces.</li>
-<li><b>The scan server</b> sees your IP address so it can stop one person from using up everyone's scans. It doesn't save it.</li>
+<li><b>The server</b> sees your IP address so it can stop one person from using up everyone's scans or guessing passwords. It doesn't save it.</li>
 <li><b>The website itself</b> is hosted on GitHub Pages and loads a font from Google Fonts. Like any website, they see your IP address when the page loads.</li>
 </ul>
 
@@ -53,7 +61,7 @@ footer a{color:var(--muted)}
 <ul>
 <li>No location. Summu doesn't ask for it or save where you scanned.</li>
 <li>No ads, no trackers, no analytics.</li>
-<li>No selling or sharing your data, because we don't have it.</li>
+<li>No selling or sharing your data. It's only used to run your account.</li>
 </ul>
 
 <h2>Camera</h2>

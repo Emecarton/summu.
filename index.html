@@ -546,6 +546,11 @@ html,body{height:100%}
 form.onb-body{margin:0}
 .vf-msg .tagmsg{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding-right:6px}
 .tagmsg button{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.16);color:inherit;font:inherit;font-size:13px;font-weight:600}
+/* Password with a Show button; "I already have an account" as a plain link */
+.field .pw{display:flex;gap:8px;align-items:center}
+.field .pw input{flex:1;min-width:0}
+.field .pw .chip{flex:none;min-height:44px}
+.linkbtn{background:none;border:0;padding:8px;font:inherit;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -884,7 +889,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="9fae3158";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=9fae3158"></script>
+<script>(function(){var V="11e4b36d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=11e4b36d"></script>
 </body>
 </html>
