@@ -678,133 +678,6 @@ form.onb-body{margin:0}
 .card.evo .g-rays{-webkit-mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%);mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%)}
 .card.evo .g-rays::before{background:repeating-conic-gradient(from 0deg,rgba(255,200,110,.26) 0 3.5deg,rgba(255,255,255,0) 3.5deg 15deg)}
 
-/* ===== Mythic angelic = Celestial (Eme, 2026-10-17: "the mythic border is the same as grail, make it its own, with an animation").
-   A night-sky card: deep indigo with a star field, an aurora that drifts across it, a silver-violet trim that turns,
-   a comet that runs round the edge, shooting stars, a frame of twinkling four-point stars and a crescent moon on top.
-   Grail stays the heavenly day card (pearl, clouds, halo) and now also gets golden wings, a light aura and a prism sweep. */
-@property --gb{syntax:'<angle>';inherits:true;initial-value:0deg}
-.card.angelic.celest{--rbc:conic-gradient(from var(--ga),#9FE8FF,#C9B8FF,#FFFFFF,#7DE3D0,#B48CFF,#8FB6FF,#9FE8FF);--rb:linear-gradient(115deg,#BFF2FF,#D8CCFF 45%,#FFFFFF 60%,#9FE3D6);
-  color:#EEF0FF;background:#0C0A26;box-shadow:0 0 0 1px rgba(190,170,255,.35),0 1em 2em -.8em rgba(70,40,190,.85),0 0 1.6em -.2em rgba(120,200,255,.45);animation:g-turn 9s linear infinite}
-.card.big.angelic.celest{animation:g-turn 9s linear infinite}
-.card.angelic.celest .card-in{background:radial-gradient(120% 75% at 50% 0%,#33227A 0%,#1A1248 42%,#0A0820 100%);overflow:hidden}
-.card.angelic.celest .card-in::before{background:var(--rbc);padding:.16em}
-.card.angelic.celest .card-in>*:not(.c-sky):not(.c-aurora){position:relative;z-index:1}
-.card.angelic.celest .card-top .tier{background:linear-gradient(90deg,#9FE8FF,#E4DCFF,#FFFFFF,#9FE3D6,#C9B8FF,#9FE8FF) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:g-text 5s linear infinite}
-.card.angelic.celest .card-top .no,.card.angelic.celest .card-stats small,.card.angelic.celest .card-foot{color:rgba(220,220,255,.62)}
-.card.angelic.celest .card-name span{color:rgba(230,230,255,.8)}
-.card.angelic.celest .card-foot span:first-child{color:#fff}
-.card.angelic.celest .card-stats span{background:rgba(160,150,255,.12)}
-.card.angelic.celest .art{background:linear-gradient(#0C0A26,#0C0A26) padding-box,var(--rbc) border-box;border-width:.18em;box-shadow:0 0 1em -.1em rgba(140,190,255,.75)}
-.card.angelic.celest .art .crop{background:#0C0A26}
-.card.angelic.celest .art::after{background:linear-gradient(180deg,rgba(200,220,255,.18),transparent 38%)}
-.card.angelic.celest .holo{background:linear-gradient(115deg,transparent 20%,rgba(150,230,255,.5) 35%,rgba(200,170,255,.5) 48%,rgba(150,255,220,.45) 60%,transparent 75%);background-size:260% 260%;mix-blend-mode:screen;opacity:.35}
-/* the star field and the aurora live behind the content */
-.c-sky,.c-aurora{position:absolute;inset:0;z-index:0;border-radius:inherit;pointer-events:none}
-.c-sky{background:
-  radial-gradient(1px 1px at 8% 12%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 22% 6%,#fff 99%,transparent),radial-gradient(1px 1px at 37% 15%,#dfe8ff 99%,transparent),
-  radial-gradient(1.5px 1.5px at 63% 9%,#fff 99%,transparent),radial-gradient(1px 1px at 78% 4%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 91% 14%,#e8dcff 99%,transparent),
-  radial-gradient(1px 1px at 6% 68%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 94% 64%,#fff 99%,transparent),radial-gradient(1px 1px at 12% 88%,#dfe8ff 99%,transparent),
-  radial-gradient(1px 1px at 48% 95%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 84% 90%,#fff 99%,transparent),radial-gradient(1px 1px at 70% 78%,#e8dcff 99%,transparent)}
-.c-sky::after{content:"";position:absolute;inset:0;background:
-  radial-gradient(2px 2px at 15% 22%,#fff 99%,transparent),radial-gradient(2px 2px at 55% 4%,#fff 99%,transparent),radial-gradient(2px 2px at 86% 30%,#fff 99%,transparent),
-  radial-gradient(2px 2px at 4% 46%,#fff 99%,transparent),radial-gradient(2px 2px at 96% 82%,#fff 99%,transparent),radial-gradient(2px 2px at 30% 92%,#fff 99%,transparent);
-  filter:drop-shadow(0 0 2px #fff);animation:c-twinkle 2.6s ease-in-out infinite}
-@keyframes c-twinkle{0%,100%{opacity:.25}50%{opacity:1}}
-.c-aurora{overflow:hidden}
-.c-aurora::before,.c-aurora::after{content:"";position:absolute;left:-60%;width:220%;height:45%;filter:blur(1.1em);opacity:.75;mix-blend-mode:screen}
-.c-aurora::before{top:6%;background:linear-gradient(100deg,transparent 10%,rgba(90,255,200,.55) 30%,rgba(120,200,255,.5) 45%,rgba(190,120,255,.55) 62%,transparent 85%);
-  transform:skewY(-10deg);animation:c-aur 7s ease-in-out infinite alternate}
-.c-aurora::after{top:52%;height:30%;background:linear-gradient(100deg,transparent 15%,rgba(190,120,255,.4) 40%,rgba(90,220,255,.4) 60%,transparent 85%);
-  transform:skewY(8deg);animation:c-aur 9s -3s ease-in-out infinite alternate-reverse;opacity:.5}
-@keyframes c-aur{0%{translate:-12% 0;scale:1 .8}50%{translate:6% -6%;scale:1.1 1.15}100%{translate:18% 4%;scale:.95 .9}}
-/* the frame: twinkling four-point stars all round the card (where Grail has clouds) */
-.card.angelic.celest .starframe{position:absolute;inset:-.78em;z-index:-1;pointer-events:none;--st:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cpath d=%27M10 0C10.9 6.6 13.4 9.1 20 10 13.4 10.9 10.9 13.4 10 20 9.1 13.4 6.6 10.9 0 10 6.6 9.1 9.1 6.6 10 0Z%27 fill=%27%23F4F7FF%27/%3E%3C/svg%3E");border-radius:1.5em;
-  background:var(--st) 0 0/2.1em 2.1em space no-repeat,var(--st) 0 100%/2.1em 2.1em space no-repeat,var(--st) 0 0/2.1em 2.1em no-repeat space,var(--st) 100% 0/2.1em 2.1em no-repeat space,
-    radial-gradient(closest-side,rgba(40,28,110,0) 0,rgba(40,28,110,0) 100%) ,linear-gradient(#0E0B2E,#0E0B2E) .55em .55em/calc(100% - 1.1em) calc(100% - 1.1em) no-repeat;
-  filter:drop-shadow(0 0 .22em rgba(160,220,255,1)) drop-shadow(0 0 .7em rgba(150,110,255,.8));animation:c-frame 3s ease-in-out infinite}
-.card.angelic.celest .starframe::after{content:"";position:absolute;inset:.42em;
-  background:var(--st) 1.05em .05em/.8em .8em space no-repeat,var(--st) 1.05em calc(100% - .05em)/.8em .8em space no-repeat,var(--st) .05em 1.05em/.8em .8em no-repeat space,var(--st) calc(100% - .05em) 1.05em/.8em .8em no-repeat space;
-  animation:c-frame 3s -1.5s ease-in-out infinite;opacity:.8}
-@keyframes c-frame{0%,100%{opacity:.55}50%{opacity:1}}
-.card.mini.angelic.celest .starframe{inset:-.62em}
-/* the crescent moon on top (where Grail has its halo) */
-.card.angelic.celest .moon{position:absolute;top:-1.55em;left:50%;z-index:5;width:2.5em;height:2.5em;margin-left:-1.25em;border-radius:50%;pointer-events:none;
-  box-shadow:inset .62em -.28em 0 0 #F3F0FF;filter:drop-shadow(0 0 .35em rgba(190,220,255,1)) drop-shadow(0 0 1em rgba(150,120,255,.9));rotate:-28deg;animation:c-moon 4s ease-in-out infinite}
-.card.angelic.celest .moon::after{content:"";position:absolute;right:-.55em;top:.1em;width:.7em;height:.7em;background:#fff;
-  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:twinkle 2.2s ease-in-out infinite}
-@keyframes c-moon{0%,100%{transform:translateY(0)}50%{transform:translateY(-.28em);filter:drop-shadow(0 0 .55em rgba(200,230,255,1)) drop-shadow(0 0 1.6em rgba(150,120,255,1))}}
-.card.mini.angelic.celest .moon{top:-1.35em}
-.card.angelic.celest .spark{background:#E8F4FF;filter:drop-shadow(0 0 .3em rgba(120,220,255,1))}
-/* a shooting star crosses the card now and then */
-.c-shoot{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
-.c-shoot::before,.c-shoot::after{content:"";position:absolute;top:8%;left:110%;width:38%;height:2px;border-radius:2px;
-  background:linear-gradient(90deg,#fff,rgba(190,230,255,.7) 30%,rgba(150,120,255,0));filter:drop-shadow(0 0 4px #CFE6FF);transform:rotate(-28deg);animation:c-shoot 6s 1s ease-in infinite}
-.c-shoot::after{top:40%;animation-delay:4.2s;animation-duration:7.5s;width:28%}
-@keyframes c-shoot{0%{left:110%;top:2%;opacity:0}3%{opacity:1}14%{left:-50%;top:38%;opacity:0}100%{left:-50%;top:38%;opacity:0}}
-/* a comet of light runs round the edge (Mythic silver, Grail gold) */
-.card.angelic .orbit{position:absolute;inset:-.06em;z-index:6;border-radius:1.15em;padding:.2em;pointer-events:none;
-  background:conic-gradient(from var(--gb),transparent 0 72%,rgba(255,255,255,0) 72%,var(--oc,#CFE9FF) 94%,#fff 97%,transparent 98%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
-  filter:drop-shadow(0 0 .3em var(--oc,#CFE9FF));animation:c-orbit 3.4s linear infinite}
-.card.evo .orbit{--oc:#FFD36E;animation-duration:2.8s}
-.card.evo .orbit::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:inherit;background:conic-gradient(from calc(var(--gb) + 180deg),transparent 0 80%,#FFE7A8 96%,#fff 97.5%,transparent 98.5%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-@keyframes c-orbit{to{--gb:360deg}}
-/* a prism of light sweeps over the photo */
-.card.angelic .prism{position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:overlay;opacity:.5;
-  background:linear-gradient(115deg,transparent 36%,rgba(255,90,140,.5) 41%,rgba(255,210,80,.5) 45%,rgba(80,230,160,.5) 49%,rgba(80,170,255,.5) 53%,rgba(190,110,255,.5) 57%,transparent 62%) 0 0/300% 300%;
-  animation:prism 4.5s ease-in-out infinite}
-.card.angelic.celest .prism{mix-blend-mode:screen;opacity:.4;background-image:linear-gradient(115deg,transparent 30%,rgba(120,220,255,.5) 42%,rgba(200,170,255,.5) 50%,rgba(140,255,220,.45) 58%,transparent 70%)}
-@keyframes prism{0%{background-position:100% 100%}60%,100%{background-position:0% 0%}}
-/* ===== Grail, more impressive: golden wings that beat slowly, a pulsing aura of light, more light motes, two comets and a glint */
-.card.evo .wings{position:absolute;left:0;right:0;top:-21%;height:46%;z-index:-1;pointer-events:none}
-.card.evo .wings b{position:absolute;top:0;width:80%;height:100%;filter:drop-shadow(0 0 .45em rgba(255,214,120,.95)) drop-shadow(0 0 1.3em rgba(255,236,180,.8))}
-.card.evo .wings b::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-140 18 370 172%22%3E%3Cdefs%3E%3ClinearGradient id=%22p%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23FFFCF2%22/%3E%3Cstop offset=%22.6%22 stop-color=%22%23FFEBB8%22/%3E%3Cstop offset=%221%22 stop-color=%22%23F1C35A%22/%3E%3C/linearGradient%3E%3ClinearGradient id=%22s%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23FFFFFF%22/%3E%3Cstop offset=%221%22 stop-color=%22%23FFE29A%22/%3E%3C/linearGradient%3E%3ClinearGradient id=%22c%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23FFFFFF%22/%3E%3Cstop offset=%221%22 stop-color=%22%23FFF2D2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%22M7.3 44.0 Q-78.9 109.1 -135.1 154.1 Q-132.5 162.9 -124.6 167.5 Q-67.3 123.9 16.7 56.0Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M22.6 36.5 Q-55.7 103.1 -106.6 149.0 Q-103.5 157.6 -95.4 161.7 Q-43.4 117.1 32.7 48.0Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M37.6 30.7 Q-33.0 98.0 -78.6 144.4 Q-75.1 152.8 -66.7 156.5 Q-19.8 111.3 48.4 41.5Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M52.5 26.4 Q-10.7 94.0 -51.3 140.4 Q-47.3 148.6 -38.7 151.8 Q3.2 106.5 63.8 36.6Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M67.1 23.7 Q11.1 91.0 -24.7 137.1 Q-20.1 145.0 -11.4 147.7 Q25.7 102.7 79.1 33.3Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M81.5 22.7 Q32.4 89.1 1.3 134.5 Q6.2 142.2 15.1 144.3 Q47.7 99.9 94.0 31.5Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M95.8 23.2 Q53.1 88.3 26.4 132.7 Q31.8 140.1 40.8 141.7 Q69.0 98.2 108.7 31.3Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M109.8 25.4 Q73.2 88.6 50.6 131.8 Q56.4 138.8 65.5 139.9 Q89.6 97.6 123.2 32.7Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M123.6 29.1 Q92.7 90.2 74.0 131.8 Q80.2 138.5 89.3 139.1 Q109.6 98.2 137.4 35.6Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M137.1 34.4 Q111.6 93.1 96.4 133.0 Q103.0 139.3 112.2 139.3 Q128.9 100.1 151.3 40.1Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M150.5 41.3 Q129.8 97.3 117.9 135.3 Q124.9 141.2 134.0 140.7 Q147.5 103.3 165.0 46.2Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M163.7 49.8 Q147.4 102.9 138.4 138.8 Q145.7 144.4 154.8 143.3 Q165.4 107.9 178.5 53.9Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M176.7 59.9 Q164.3 110.0 158.0 143.8 Q165.6 148.9 174.6 147.4 Q182.6 113.9 191.6 63.1Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M189.4 71.6 Q180.5 118.7 176.6 150.4 Q184.5 155.0 193.4 152.9 Q199.0 121.5 204.6 73.9Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M202.0 84.9 Q196.2 129.1 194.3 158.7 Q202.4 162.9 211.2 160.3 Q214.8 130.8 217.2 86.3Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M214.4 99.7 Q211.2 141.6 211.1 169.7 Q219.4 173.4 228.1 170.3 Q229.9 142.3 229.6 100.3Z%22 fill=%22url(%23p)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M18.1 37.8 Q-21.4 77.7 -46.2 105.6 Q-42.4 113.9 -33.8 117.2 Q-7.7 90.5 29.3 48.3Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M35.7 30.7 Q-0.2 70.9 -22.5 98.9 Q-18.2 107.0 -9.5 109.8 Q14.2 82.9 47.4 40.5Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M52.9 25.7 Q20.7 65.9 0.8 93.9 Q5.5 101.7 14.4 104.1 Q35.6 77.1 65.1 34.9Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M69.9 22.8 Q41.1 62.8 23.6 90.5 Q28.8 98.1 37.7 100.0 Q56.6 73.2 82.6 31.3Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M86.5 22.1 Q61.1 61.5 45.9 88.8 Q51.5 96.1 60.5 97.5 Q77.2 71.1 99.7 29.9Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M102.9 23.4 Q80.7 62.1 67.7 88.9 Q73.7 95.8 82.8 96.7 Q97.3 70.8 116.4 30.5Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M119.0 26.9 Q99.9 64.7 88.9 90.6 Q95.3 97.3 104.4 97.7 Q116.9 72.4 132.9 33.3Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M134.8 32.5 Q118.6 69.1 109.6 94.2 Q116.3 100.4 125.4 100.4 Q136.0 75.9 149.0 38.1Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M150.3 40.2 Q136.8 75.4 129.7 99.5 Q136.7 105.4 145.8 104.8 Q154.5 81.3 164.8 45.1Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M165.5 50.0 Q154.5 83.7 149.1 106.6 Q156.4 112.1 165.5 111.1 Q172.5 88.6 180.2 54.1Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M180.4 62.0 Q171.8 93.9 167.9 115.6 Q175.5 120.7 184.5 119.2 Q190.0 97.9 195.4 65.2Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M195.1 76.0 Q188.5 106.1 186.1 126.4 Q193.9 131.1 202.9 129.1 Q207.0 109.1 210.2 78.5Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M209.4 92.2 Q204.7 120.2 203.6 139.2 Q211.7 143.5 220.5 141.0 Q223.3 122.2 224.6 93.8Z%22 fill=%22url(%23s)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M11.6 37.5 Q-2.9 50.0 -11.2 59.7 Q-7.7 67.6 0.2 70.9 Q9.7 62.3 21.9 47.5Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M28.0 30.0 Q14.4 42.8 6.7 52.6 Q10.5 60.3 18.6 63.3 Q27.5 54.6 38.7 39.6Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M44.2 24.3 Q31.4 37.4 24.3 47.3 Q28.5 54.9 36.7 57.4 Q45.0 48.6 55.3 33.4Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M60.1 20.5 Q48.2 33.8 41.7 43.7 Q46.2 51.1 54.5 53.3 Q62.3 44.3 71.6 29.1Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M75.8 18.4 Q64.7 31.9 58.8 41.9 Q63.6 49.1 72.0 50.9 Q79.2 41.8 87.7 26.6Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M91.2 18.2 Q80.9 31.8 75.6 41.8 Q80.7 48.8 89.2 50.3 Q95.9 41.1 103.4 25.8Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M106.4 19.9 Q96.9 33.5 92.2 43.5 Q97.6 50.2 106.1 51.3 Q112.2 42.1 118.9 26.9Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M121.3 23.3 Q112.6 37.0 108.5 46.9 Q114.2 53.3 122.7 54.1 Q128.3 44.9 134.1 29.8Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M135.9 28.6 Q128.0 42.2 124.5 52.0 Q130.4 58.3 139.0 58.6 Q144.1 49.4 149.0 34.5Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M150.3 35.7 Q143.2 49.2 140.2 58.9 Q146.4 64.9 155.0 64.9 Q159.5 55.8 163.7 41.0Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M164.5 44.6 Q158.1 58.0 155.6 67.6 Q162.1 73.3 170.7 72.9 Q174.7 63.9 178.1 49.4Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M178.4 55.3 Q172.7 68.6 170.7 78.0 Q177.4 83.4 186.0 82.7 Q189.5 73.7 192.2 59.5Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M192.0 67.9 Q187.0 81.0 185.5 90.2 Q192.5 95.3 201.0 94.2 Q204.1 85.4 206.0 71.5Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3Cpath d=%22M205.4 82.3 Q201.1 95.2 200.0 104.1 Q207.2 108.9 215.7 107.4 Q218.3 98.8 219.5 85.2Z%22 fill=%22url(%23c)%22 stroke=%22%23C8962E%22 stroke-opacity=%22.5%22 stroke-width=%221%22/%3E%3C/svg%3E") center/contain no-repeat}
-.card.evo .wr::before{transform:scaleX(-1)}
-.card.evo .wl{right:40%;transform-origin:96% 80%;animation:g-flap 3.2s ease-in-out infinite}
-.card.evo .wr{left:40%;transform-origin:4% 80%;animation:g-flapr 3.2s ease-in-out infinite}
-@keyframes g-flap{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-4deg) scale(1.06)}}
-@keyframes g-flapr{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(4deg) scale(1.06)}}
-.card.evo .g-aura{position:absolute;inset:-28% -40%;z-index:-3;pointer-events:none;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,214,120,.55) 45%,rgba(255,170,220,.25) 70%,transparent);animation:g-aura 3.2s ease-in-out infinite}
-@keyframes g-aura{0%,100%{opacity:.65;transform:scale(.92)}50%{opacity:1;transform:scale(1.05)}}
-.card.evo .g-glint{position:absolute;inset:0;z-index:7;border-radius:1.1em;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.9),rgba(255,240,200,.35) 40%,transparent 70%);
-  mix-blend-mode:soft-light;opacity:0;animation:g-glint 5s 2s ease-out infinite}
-@keyframes g-glint{0%,100%{opacity:0}6%{opacity:1}22%{opacity:0}}
-.card.evo .g-motes b:nth-child(3n){border-radius:0;background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);width:calc(var(--w) * 2.6);height:calc(var(--w) * 2.6);box-shadow:none;filter:drop-shadow(0 0 3px #FFD36E)}
-.card.big.evo,.mint .card.big.evo{margin-top:5.2em}
-.card.big.evo .halo-ring{width:5.2em;margin-left:-2.6em}
-/* the walkout opens wider for Grail: the wings spread as the card lands */
-.walkout.p4 .wo-card .card.evo .wings b{animation:g-spread 1.2s .3s cubic-bezier(.2,1.4,.3,1) backwards,var(--fl) 3.2s 1.5s ease-in-out infinite}
-.walkout .wo-card .card.evo .wl{--fl:g-flap}.walkout .wo-card .card.evo .wr{--fl:g-flapr}
-@keyframes g-spread{from{transform:scale(.2) rotate(40deg);opacity:0}to{transform:none;opacity:1}}
-/* Mythic walkout is a night sky instead of daylight clouds */
-.walkout.night{color:#EEF0FF;--puff:radial-gradient(closest-side,#2A1E66 70%,rgba(42,30,102,0))}
-.walkout.night .wo-sky{background:radial-gradient(120% 70% at 50% 30%,#3A2A8A 0%,#1A1350 40%,#0B0824 75%,#05040F 100%)}
-.walkout.night .wo-sky::after{content:"";position:absolute;inset:0;background:inherit;background:
-  radial-gradient(1.5px 1.5px at 10% 14%,#fff 99%,transparent),radial-gradient(2px 2px at 28% 8%,#fff 99%,transparent),radial-gradient(1px 1px at 44% 22%,#fff 99%,transparent),
-  radial-gradient(2px 2px at 70% 12%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 88% 24%,#fff 99%,transparent),radial-gradient(1px 1px at 6% 56%,#fff 99%,transparent),
-  radial-gradient(2px 2px at 92% 60%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 18% 84%,#fff 99%,transparent),radial-gradient(1px 1px at 60% 90%,#fff 99%,transparent),
-  radial-gradient(2px 2px at 82% 86%,#fff 99%,transparent),radial-gradient(1px 1px at 36% 64%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 54% 40%,#fff 99%,transparent);
-  animation:c-twinkle 3s ease-in-out infinite}
-.walkout.night .wo-rays{background:repeating-conic-gradient(from 0deg,rgba(170,210,255,.45) 0 4deg,rgba(255,255,255,0) 4deg 15deg)}
-.walkout.night .wo-hint small,.walkout.night .wo-tap{color:#A9A3D9}
-.walkout.night .rb{background:linear-gradient(90deg,#9FE8FF,#E4DCFF,#FFFFFF,#9FE3D6,#C9B8FF);-webkit-background-clip:text;background-clip:text;color:transparent}
-.walkout.night .wo-cloud{filter:drop-shadow(0 0 22px rgba(120,90,255,.6))}
-.walkout.night .wo-cloud.l,.walkout.night .wo-cloud.r{background:var(--puff) 70% 8%/180px 150px no-repeat,var(--puff) 95% 30%/220px 190px no-repeat,var(--puff) 75% 55%/200px 170px no-repeat,var(--puff) 98% 78%/230px 200px no-repeat,var(--puff) 60% 96%/200px 170px no-repeat,linear-gradient(90deg,#2A1E66 55%,rgba(42,30,102,0) 80%)}
-.walkout.night .wo-cloud.b{background:var(--puff) 10% 40%/240px 170px no-repeat,var(--puff) 50% 20%/300px 200px no-repeat,var(--puff) 90% 40%/240px 170px no-repeat,linear-gradient(rgba(42,30,102,0),#2A1E66 60%)}
-.walkout.night .wo-flash{background:radial-gradient(circle at 50% 45%,#fff,rgba(190,220,255,.8) 40%,rgba(120,90,255,0) 75%)}
-.walkout.night .wo-sparks i{background:#E8F4FF;filter:drop-shadow(0 0 5px rgba(120,220,255,1))}
-.walkout.p4 .wo-card .card.celest .moon{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,c-moon 4s 1.8s ease-in-out infinite}
-/* a shockwave ring as an angelic card lands */
-.wo-ring{position:absolute;left:50%;top:46%;width:40px;height:40px;margin:-20px;border-radius:50%;border:3px solid rgba(255,214,120,.9);opacity:0;pointer-events:none;z-index:2}
-.walkout.night .wo-ring{border-color:rgba(170,220,255,.9)}
-.walkout.p4 .wo-ring{animation:wo-ring 1.1s .15s ease-out forwards}.walkout.p4 .wo-ring.r2{animation-delay:.4s}
-@keyframes wo-ring{0%{opacity:1;transform:scale(.5)}100%{opacity:0;transform:scale(16)}}
-.walkout.p4.shake{animation:wo-shake .45s .1s}
-@keyframes wo-shake{20%{transform:translate(-6px,3px)}40%{transform:translate(5px,-4px)}60%{transform:translate(-3px,2px)}80%{transform:translate(2px,-1px)}}
-@media (prefers-reduced-motion:reduce){.card.celest,.card.celest *,.card.celest *::before,.card.celest *::after,.card.angelic .orbit,.card.angelic .prism,.card.evo .wings b,.card.evo .g-aura,.card.evo .g-glint{animation:none!important}.c-shoot,.card.angelic .orbit,.card.evo .g-glint{display:none}}
-
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
 .phone{--hot:#FF5A2E;--mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,monospace}
@@ -1142,7 +1015,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="e124f33d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=e124f33d"></script>
+<script>(function(){var V="29b50463";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=29b50463"></script>
 </body>
 </html>
