@@ -644,6 +644,39 @@ form.onb-body{margin:0}
 .wo-card{font-family:var(--body,system-ui,-apple-system,sans-serif)}
 .walkout.p3 .wo-cloud.l{transform:translateX(-30%)}
 .walkout.p3 .wo-cloud.r{transform:translateX(30%) scaleX(-1)}
+/* Evolved Grail cards (Eme, 2026-10-17: "like the evos, more special than Legendary"):
+   the rainbow trim flows round the card, light rays turn behind it, a shine sweeps across, light motes float up,
+   the halo bobs and glows, and the cloud frame breathes */
+@property --ga{syntax:'<angle>';inherits:true;initial-value:0deg}
+.card.evo{--rbc:conic-gradient(from var(--ga),#FF7A93,#FFA851,#EFC437,#5CC788,#4FA6EE,#9A78EE,#EE72BC,#FF7A93);animation:g-turn 6s linear infinite}
+@keyframes g-turn{to{--ga:360deg}}
+.card.evo .card-in::before{background:var(--rbc);padding:.18em}
+.card.evo .art{background:linear-gradient(#fff,#fff) padding-box,var(--rbc) border-box;border-width:.2em}
+.card.evo .card-in{background:radial-gradient(120% 70% at 50% 8%,#FFFBF2,#FFF2DE 45%,#F1E9FF)}
+.card.evo .card-in>*:not(.g-rays){position:relative;z-index:1}
+.card.evo .g-rays{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.card.evo .g-rays::before{content:"";position:absolute;left:50%;top:30%;width:260%;aspect-ratio:1;translate:-50% -50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,206,120,.38) 0 6deg,rgba(255,255,255,0) 6deg 18deg);animation:wo-spin 24s linear infinite}
+.card.evo .g-shine{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.evo .g-shine::before{content:"";position:absolute;top:-20%;bottom:-20%;width:38%;left:-60%;transform:skewX(-18deg);
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.75) 45%,rgba(255,236,190,.9) 50%,rgba(255,255,255,.75) 55%,rgba(255,255,255,0));
+  mix-blend-mode:soft-light;animation:g-shine 3.6s cubic-bezier(.5,0,.3,1) infinite}
+@keyframes g-shine{0%,35%{left:-60%}75%,100%{left:130%}}
+.card.evo .g-motes{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.evo .g-motes b{position:absolute;left:var(--l);bottom:-6%;width:var(--w);height:var(--w);border-radius:50%;background:#FFE7A8;
+  box-shadow:0 0 6px 2px rgba(255,214,120,.8);opacity:0;animation:g-mote var(--s) var(--t) ease-in infinite}
+@keyframes g-mote{0%{opacity:0;transform:translate(0,0)}15%{opacity:.95}80%{opacity:.7}100%{opacity:0;transform:translate(.8em,-26em)}}
+.card.evo .halo-ring{animation:g-halo 3s ease-in-out infinite}
+@keyframes g-halo{0%,100%{transform:translateY(0);box-shadow:0 0 .8em .15em rgba(255,200,90,.8),inset 0 0 .4em rgba(255,200,90,.8)}
+  50%{transform:translateY(-.3em);box-shadow:0 0 1.4em .4em rgba(255,200,90,1),inset 0 0 .5em rgba(255,200,90,1)}}
+.card.evo .cloud{animation:g-cloud 5s ease-in-out infinite}
+@keyframes g-cloud{50%{transform:scale(1.025);filter:drop-shadow(0 0 .45em rgba(255,200,150,1)) drop-shadow(0 0 1.2em rgba(190,170,255,.6))}}
+.card.evo .card-top .tier{background:linear-gradient(90deg,#FF7A93,#FFA851,#EFC437,#5CC788,#4FA6EE,#9A78EE,#EE72BC,#FF7A93) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;animation:g-text 4s linear infinite}
+@keyframes g-text{to{background-position:200% 0}}
+.walkout.p4 .wo-card .card.evo .halo-ring{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,g-halo 3s 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.card.evo,.card.evo *,.card.evo .g-rays::before,.card.evo .g-shine::before{animation:none!important}.card.evo .g-motes{display:none}}
+.card.evo .g-rays{-webkit-mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%);mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%)}
+.card.evo .g-rays::before{background:repeating-conic-gradient(from 0deg,rgba(255,200,110,.26) 0 3.5deg,rgba(255,255,255,0) 3.5deg 15deg)}
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -982,7 +1015,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="562f87a8";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=562f87a8"></script>
+<script>(function(){var V="5b84b793";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=5b84b793"></script>
 </body>
 </html>
