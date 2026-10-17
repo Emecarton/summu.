@@ -678,6 +678,24 @@ form.onb-body{margin:0}
 .card.evo .g-rays{-webkit-mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%);mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%)}
 .card.evo .g-rays::before{background:repeating-conic-gradient(from 0deg,rgba(255,200,110,.26) 0 3.5deg,rgba(255,255,255,0) 3.5deg 15deg)}
 
+/* Speed: cards that are off screen, or behind a sheet or a reveal, pause their animations (set by watchCards in web-app.js) */
+.card.off,.card.off::before,.card.off::after,.card.off *,.card.off *::before,.card.off *::after{animation-play-state:paused!important}
+/* Speed: the Grail effects only animate things a phone can move without repainting (position, size, fade).
+   The turning rainbow trim and the flowing tier text run only on big cards, where there is one at a time. */
+.card.evo.mini{animation:none}
+.card.evo.mini .card-top .tier{animation:none}
+.card.evo .cloud{animation-name:g-cloud2;filter:drop-shadow(0 0 .3em rgba(255,200,150,.9)) drop-shadow(0 0 .9em rgba(190,170,255,.45))}
+@keyframes g-cloud2{50%{transform:scale(1.025)}}
+.card.evo .halo-ring{animation-name:g-halo2;box-shadow:0 0 1.1em .3em rgba(255,200,90,.9),inset 0 0 .45em rgba(255,200,90,.9)}
+@keyframes g-halo2{50%{transform:translateY(-.3em)}}
+.card.evo .g-shine::before{left:-60%;animation-name:g-shine2;will-change:transform}
+@keyframes g-shine2{0%,35%{transform:translateX(0) skewX(-18deg)}75%,100%{transform:translateX(500%) skewX(-18deg)}}
+.card.evo .g-rays::before,.card.evo .g-motes b,.card.angelic .spark{will-change:transform,opacity}
+/* Speed: the phone skips laying out and drawing Vault cards that are off screen. The padding (cancelled by the
+   negative margin) leaves room for the clouds and halo of angelic cards, which would otherwise be cut off. */
+.vault .cardbtn{width:auto;content-visibility:auto;contain-intrinsic-size:auto 300px;padding:20px;margin:-20px;pointer-events:none}
+.vault .cardbtn>.card{pointer-events:auto}
+
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
 .phone{--hot:#FF5A2E;--mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,monospace}
@@ -952,7 +970,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
 .quest .ok{background:var(--gold)}
 .trophy.on .ic{background:linear-gradient(150deg,#FFE7A8,#E7B04E);color:#5A3A00}
 /* Tab bar: warm frosted, the open tab gets a rainbow line */
-.tabs{background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tabs{background:color-mix(in oklab,var(--bg) 97%,transparent);border-top:1px solid var(--line)}
 .tab{position:relative}
 .tab[aria-current="page"]{color:var(--ink)}
 .tab[aria-current="page"]::before{display:block!important;content:"";position:absolute;top:-6px;left:50%;width:26px;height:3px;margin-left:-13px;border-radius:3px;background:var(--rainbow)}
@@ -1015,7 +1033,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="29b50463";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=29b50463"></script>
+<script>(function(){var V="884a948a";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=884a948a"></script>
 </body>
 </html>
