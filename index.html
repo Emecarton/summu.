@@ -696,6 +696,61 @@ form.onb-body{margin:0}
 .vault .cardbtn{width:auto;content-visibility:auto;contain-intrinsic-size:auto 300px;padding:20px;margin:-20px;pointer-events:none}
 .vault .cardbtn>.card{pointer-events:auto}
 
+/* ===== MYTHIC-ROSE (Eme, 2026-10-19: "change the mythic card frame and add an animation"; Grail's animations are the bar).
+   Angelic Mythic cards ($3k to $10k) are rose-gold: a frame of pearl-pink petals where Grail has clouds, a pink gem where Grail
+   has a halo, a rose-gold trim, soft pink light rays, petals falling through the card and a shine. Every animation only moves
+   or fades things (no repainting), so a Vault full of them stays smooth. */
+.card.rose{--rg:linear-gradient(120deg,#C9737F,#F4C6B8 30%,#FFE6DA 45%,#E79AAA 62%,#B95F71 80%,#F4C6B8);background:#fff;box-shadow:0 1.1em 2em -1em rgba(214,90,130,.5)}
+.card.rose .card-in{background:radial-gradient(130% 75% at 50% 12%,#fff,#FFF1F4 52%,#FBE1E9)}
+.card.rose .card-in::before{background:var(--rg);padding:.16em}
+.card.rose .card-top .tier{background:linear-gradient(90deg,#D4566F,#E98A8F 40%,#C9737F 70%,#B4485F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card.rose .art{background:linear-gradient(#fff,#fff) padding-box,var(--rg) border-box;box-shadow:0 0 .8em -.2em rgba(226,71,110,.45)}
+.card.rose .holo{background:linear-gradient(115deg,transparent 20%,rgba(255,170,195,.6) 38%,rgba(255,225,205,.6) 50%,rgba(255,190,215,.55) 62%,transparent 78%);background-size:260% 260%}
+.card.rose .card-in>*:not(.r-rays){position:relative;z-index:1}
+/* the petal frame: pearl-pink petals all round, the card covers their inner half */
+.card.rose .petals{position:absolute;inset:-1.25em;z-index:-1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 28%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%270%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFFFFF%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFE3EA%27/%3E%3Cstop offset=%271%27 stop-color=%27%23FFB8CA%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 4V24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") 0 0/1.9em 2.6em round no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 28%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%270%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFFFFF%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFE3EA%27/%3E%3Cstop offset=%271%27 stop-color=%27%23FFB8CA%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 4V24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") 0 100%/1.9em 2.6em round no-repeat;
+  filter:drop-shadow(0 0 .25em rgba(255,150,180,.8)) drop-shadow(0 0 .8em rgba(255,190,170,.45));animation:r-breathe 4.5s ease-in-out infinite}
+.card.mini.rose .petals{inset:-1.05em}
+.card.rose .petals::before{content:"";position:absolute;inset:.5em 1.4em;z-index:-1;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 28%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%270%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD0DC%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFB3C6%27/%3E%3Cstop offset=%271%27 stop-color=%27%23F48AA6%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 4V24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") .95em 0/1.9em 2.3em round no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 28%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%270%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD0DC%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFB3C6%27/%3E%3Cstop offset=%271%27 stop-color=%27%23F48AA6%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 4V24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") .95em 100%/1.9em 2.3em round no-repeat}
+/* the side petals stop short of the corners so the corners stay clean */
+.card.rose .petals::after{content:"";position:absolute;inset:2.1em 0;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%270%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFFFFF%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFE3EA%27/%3E%3Cstop offset=%271%27 stop-color=%27%23FFB8CA%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath transform=%27rotate(90 10 10) translate(0 -4)%27 d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M4 10H24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") 0 0/2.6em 1.9em no-repeat round,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%270%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFFFFF%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFE3EA%27/%3E%3Cstop offset=%271%27 stop-color=%27%23FFB8CA%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath transform=%27rotate(90 10 10) translate(0 -4)%27 d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M4 10H24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") 100% 0/2.6em 1.9em no-repeat round,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%270%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD0DC%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFB3C6%27/%3E%3Cstop offset=%271%27 stop-color=%27%23F48AA6%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath transform=%27rotate(90 10 10) translate(0 -4)%27 d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M4 10H24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") .5em .95em/2.3em 1.9em no-repeat round,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 28 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%270%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD0DC%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FFB3C6%27/%3E%3Cstop offset=%271%27 stop-color=%27%23F48AA6%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath transform=%27rotate(90 10 10) translate(0 -4)%27 d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27url(%23g)%27 stroke=%27%23E9A2B2%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M4 10H24%27 stroke=%27%23F2BFCB%27 stroke-width=%27.6%27/%3E%3C/svg%3E") calc(100% - .5em) .95em/2.3em 1.9em no-repeat round}
+@keyframes r-breathe{50%{transform:scale(1.03)}}
+/* the gem on top */
+.card.rose .gem{position:absolute;top:-1.55em;left:50%;z-index:5;width:2.6em;height:2.2em;margin-left:-1.3em;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 34%27%3E%3Cdefs%3E%3ClinearGradient id=%27a%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFE6EE%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23FF8FAE%27/%3E%3Cstop offset=%271%27 stop-color=%27%23E2476E%27/%3E%3C/linearGradient%3E%3ClinearGradient id=%27b%27 x1=%270%27 y1=%270%27 x2=%270%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFFFFF%27/%3E%3Cstop offset=%271%27 stop-color=%27%23FFC1D2%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 1H30L39 11 20 33 1 11Z%27 fill=%27url(%23a)%27 stroke=%27%23C9506F%27 stroke-width=%271%27/%3E%3Cpath d=%27M10 1 14 11H26L30 1M1 11H39M14 11 20 33 26 11%27 fill=%27none%27 stroke=%27%23FFD9E3%27 stroke-width=%27.9%27/%3E%3Cpath d=%27M10 1H30L26 11H14Z%27 fill=%27url(%23b)%27 opacity=%27.85%27/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 .35em rgba(255,120,160,.95)) drop-shadow(0 .15em .2em rgba(160,40,80,.35));animation:r-gem 3.4s ease-in-out infinite}
+.card.rose .gem::after{content:"";position:absolute;top:8%;left:62%;width:.9em;height:.9em;background:#fff;
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:r-glint 3.4s ease-in-out infinite}
+@keyframes r-gem{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-.3em) rotate(3deg)}}
+@keyframes r-glint{0%,40%,100%{opacity:0;transform:scale(.3) rotate(0)}55%{opacity:1;transform:scale(1.1) rotate(45deg)}70%{opacity:0;transform:scale(.4) rotate(90deg)}}
+.card.mini.rose .gem{top:-1.4em}
+/* soft rose light rays turning slowly behind the content */
+.card.rose .r-rays{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.card.rose .r-rays::before{content:"";position:absolute;left:50%;top:28%;width:260%;aspect-ratio:1;translate:-50% -50%;will-change:transform;
+  background:repeating-conic-gradient(from 0deg,rgba(255,150,180,.16) 0 5deg,rgba(255,255,255,0) 5deg 15deg);animation:wo-spin 30s linear infinite}
+/* a shine that sweeps across */
+.card.rose .r-shine{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.rose .r-shine::before{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;left:-60%;will-change:transform;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.7) 45%,rgba(255,220,230,.9) 50%,rgba(255,255,255,.7) 55%,rgba(255,255,255,0));
+  mix-blend-mode:soft-light;animation:r-shine 4.2s 1s cubic-bezier(.5,0,.3,1) infinite}
+@keyframes r-shine{0%,40%{transform:translateX(0) skewX(-18deg)}80%,100%{transform:translateX(520%) skewX(-18deg)}}
+/* petals drifting down through the card */
+.card.rose .r-fall{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.rose .r-fall b{position:absolute;left:var(--l);top:-8%;width:var(--w);height:calc(var(--w) * 1.4);background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 28%27%3E%3Cpath d=%27M10 .6C16.6 8 16.6 20 10 27.4 3.4 20 3.4 8 10 .6Z%27 fill=%27%23FFC2D2%27/%3E%3C/svg%3E") center/contain no-repeat;opacity:0;will-change:transform,opacity;animation:r-fall var(--s) var(--t) linear infinite}
+@keyframes r-fall{0%{opacity:0;transform:translate(0,0) rotate(0)}12%{opacity:.95}50%{transform:translate(1.1em,12em) rotate(160deg)}85%{opacity:.8}100%{opacity:0;transform:translate(-.4em,25em) rotate(320deg)}}
+.card.rose .spark{filter:drop-shadow(0 0 .25em rgba(226,71,110,.9))}
+/* in the Vault grid (many cards at once) the frame and the rays hold still and the gem just floats; big cards get everything */
+.card.mini.rose .petals,.card.mini.rose .r-rays::before{animation:none}
+.card.mini.rose .gem::after,.card.mini.rose .r-fall b:nth-child(n+5){display:none}
+/* the reveal for a Mythic card: rose light and a gem that drops in */
+.walkout.rose .wo-rays{filter:hue-rotate(-40deg) saturate(1.3)}
+.walkout.rose .wo-sparks i{background:#FFD3DF}
+.walkout.p4 .wo-card .card.rose .gem{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,r-gem 3.4s 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.card.rose .petals,.card.rose .gem,.card.rose .gem::after,.card.rose .r-rays::before,.card.rose .r-shine::before{animation:none}.card.rose .r-fall{display:none}}
+/* ===== /MYTHIC-ROSE */
+
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
 .phone{--hot:#FF5A2E;--mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,monospace}
@@ -1033,7 +1088,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="884a948a";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=884a948a"></script>
+<script>(function(){var V="5cbd028e";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=5cbd028e"></script>
 </body>
 </html>
