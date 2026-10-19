@@ -344,8 +344,8 @@ html,body{height:100%}
 .profile .av svg{width:38px;height:38px;color:#fff}
 
 /* Card game: 7 rarity tiers, minted cards, Vault, Hunts, trophies. Five tabs: Vault, Dex, Scan, Hunts, Me. */
-.phone{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A}
-.phone[data-look="light"]{--common:#7A766F;--uncommon:#1F9D6B;--rare:#2C93D8;--epic:#7A3CFF;--legendary:#D9861A;--mythic:#E0335C;--grail:#B8892A}
+.phone{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A}
+.phone[data-look="light"]{--common:#7A766F;--uncommon:#1F9D6B;--rare:#2C93D8;--epic:#7A3CFF;--legendary:#D9861A;--mythic:#E0335C;--grail:#B8892A;--crown:#A9781C}
 .phone[data-look="light"] .rar{color:#fff}
 .phone[data-look="light"] .rar[style*="grail"],.phone[data-look="light"] .rar[style*="legendary"]{color:#1C1C1B}
 .tabs{grid-template-columns:repeat(5,1fr)}
@@ -356,7 +356,7 @@ html,body{height:100%}
 .ptspill b{margin:0 1px}
 
 /* The card. Sizes are in em so one design scales from the big reveal to the small Vault grid. */
-.card{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;
+.card{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A;
   position:relative;display:block;width:100%;border-radius:1.1em;padding:.42em;color:#fff;text-align:left;isolation:isolate;overflow:hidden;
   background:linear-gradient(155deg,color-mix(in srgb,var(--c) 72%,#fff),color-mix(in srgb,var(--c) 62%,#000) 55%,color-mix(in srgb,var(--c) 85%,#fff));
   box-shadow:0 .9em 1.8em -.9em color-mix(in srgb,var(--c) 75%,transparent),0 0 0 1px rgba(0,0,0,.35)}
@@ -750,6 +750,96 @@ form.onb-body{margin:0}
 .walkout.p4 .wo-card .card.rose .gem{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,r-gem 3.4s 1.8s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.card.rose .petals,.card.rose .gem,.card.rose .gem::after,.card.rose .r-rays::before,.card.rose .r-shine::before{animation:none}.card.rose .r-fall{display:none}}
 /* ===== /MYTHIC-ROSE */
+/* ===== CROWN (Eme, 2026-10-19: "a new category for the ones over 100k, a crazy animation, that feels very exclusive").
+   Crown cards ($100k and up) are the black card: obsidian with a gold lattice, liquid gold trim, a jewelled crown on top,
+   a thin gold frame with a diamond in each corner, gold light rays, gold dust rising and a shine. Like Grail and Mythic,
+   every animation only moves or fades things, and Vault minis keep the frame and rays still. */
+.card.crown,.card.angelic.crown,.card.big.angelic.crown{--gd:linear-gradient(135deg,#7A5A1E,#F7E19A 22%,#B8862B 42%,#FFF3C4 58%,#A87A26 78%,#F2D27A);
+  background:var(--gd);color:#FFF4DA;box-shadow:0 1.2em 2.2em -1em rgba(120,85,20,.7),0 0 1.4em -.2em rgba(233,196,106,.55)}
+.card.crown .card-in{background:repeating-linear-gradient(45deg,rgba(233,196,106,.06) 0 1px,transparent 1px 14px),repeating-linear-gradient(-45deg,rgba(233,196,106,.06) 0 1px,transparent 1px 14px),
+  radial-gradient(130% 75% at 50% 14%,#2E2414,#14110B 52%,#060504)}
+.card.crown .card-in::before{background:conic-gradient(from var(--ga),#8C6420,#F7E19A,#B8862B,#FFF6D0,#A87A26,#F7E19A,#8C6420);padding:.16em}
+.card.big.crown{animation:g-turn 5s linear infinite}
+.card.crown .card-in>*:not(.c-rays){position:relative;z-index:1}
+.card.crown .card-top .tier{background:linear-gradient(90deg,#B8862B,#FFF3C4 30%,#E9C46A 50%,#FFF3C4 70%,#B8862B) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.card.big.crown .card-top .tier{animation:g-text 3s linear infinite}
+.card.crown .card-top .no,.card.crown .card-stats small,.card.crown .card-foot{color:rgba(233,196,106,.78)}
+.card.crown .card-name span{color:rgba(255,244,218,.72)}
+.card.crown .card-foot span:first-child{color:#FFF4DA}
+.card.crown .card-stats span{background:rgba(233,196,106,.09);box-shadow:inset 0 0 0 1px rgba(233,196,106,.2)}
+.card.crown .card-stats b{color:#FFE9A8}
+.card.crown .art{border:.16em solid transparent;background:linear-gradient(#0A0907,#0A0907) padding-box,var(--gd) border-box;box-shadow:0 0 1em -.1em rgba(233,196,106,.6)}
+.card.crown .art .crop{background:#0A0907}
+.card.crown .holo{background:linear-gradient(115deg,transparent 22%,rgba(255,226,150,.5) 38%,rgba(255,250,230,.6) 50%,rgba(255,200,110,.5) 62%,transparent 78%);background-size:260% 260%;mix-blend-mode:soft-light;opacity:.55}
+/* the frame: a thin gold line around the card with a gold diamond in each corner */
+.card.crown .c-frame{position:absolute;inset:-.5em;z-index:-1;border-radius:1.6em;pointer-events:none;border:.1em solid rgba(233,196,106,.9);box-shadow:0 0 .9em rgba(233,196,106,.5),inset 0 0 .6em rgba(233,196,106,.25)}
+.card.crown .c-frame::before{content:"";position:absolute;inset:-.08em;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 1 19 10 10 19 1 10Z%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 5 15 10 10 15 5 10Z%27 fill=%27%23FFF6E0%27 opacity=%27.55%27/%3E%3C/svg%3E") 0 0/1.1em no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 1 19 10 10 19 1 10Z%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 5 15 10 10 15 5 10Z%27 fill=%27%23FFF6E0%27 opacity=%27.55%27/%3E%3C/svg%3E") 100% 0/1.1em no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 1 19 10 10 19 1 10Z%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 5 15 10 10 15 5 10Z%27 fill=%27%23FFF6E0%27 opacity=%27.55%27/%3E%3C/svg%3E") 0 100%/1.1em no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.5%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M10 1 19 10 10 19 1 10Z%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%27.8%27/%3E%3Cpath d=%27M10 5 15 10 10 15 5 10Z%27 fill=%27%23FFF6E0%27 opacity=%27.55%27/%3E%3C/svg%3E") 100% 100%/1.1em no-repeat;
+  filter:drop-shadow(0 0 .25em rgba(255,206,100,.9))}
+.card.mini.crown .c-frame{inset:-.45em}
+/* the jewelled crown on top, floating, with a glint */
+.card.crown .crown-ic{position:absolute;top:-1.75em;left:50%;z-index:5;width:3.3em;height:2.3em;margin-left:-1.65em;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 44%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.35%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%27.6%27 stop-color=%27%23B8862B%27/%3E%3Cstop offset=%27.8%27 stop-color=%27%23F7E19A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M6 34 3 10l15 13L32 4l14 19 15-13-3 24Z%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%271.2%27 stroke-linejoin=%27round%27/%3E%3Crect x=%275%27 y=%2733%27 width=%2754%27 height=%278%27 rx=%272%27 fill=%27url%28%23g%29%27 stroke=%27%237A5A1E%27 stroke-width=%271.2%27/%3E%3Ccircle cx=%273%27 cy=%2710%27 r=%273%27 fill=%27%23FFF6E0%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2732%27 cy=%274%27 r=%273.4%27 fill=%27%23FFF6E0%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2761%27 cy=%2710%27 r=%273%27 fill=%27%23FFF6E0%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2732%27 cy=%2725%27 r=%274.2%27 fill=%27%23D7263D%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2718%27 cy=%2729%27 r=%272.6%27 fill=%27%232D6FD8%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2746%27 cy=%2729%27 r=%272.6%27 fill=%27%232D6FD8%27 stroke=%27%238C6420%27/%3E%3Ccircle cx=%2720%27 cy=%2737%27 r=%271.6%27 fill=%27%23FFF6E0%27/%3E%3Ccircle cx=%2732%27 cy=%2737%27 r=%271.6%27 fill=%27%23FFF6E0%27/%3E%3Ccircle cx=%2744%27 cy=%2737%27 r=%271.6%27 fill=%27%23FFF6E0%27/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 .35em rgba(255,206,100,.95)) drop-shadow(0 .15em .2em rgba(80,50,0,.5));animation:c-float 3.6s ease-in-out infinite}
+.card.crown .crown-ic::after{content:"";position:absolute;top:-4%;left:42%;width:.95em;height:.95em;background:#fff;
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:r-glint 3.6s .8s ease-in-out infinite}
+@keyframes c-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-.3em)}}
+.card.mini.crown .crown-ic{top:-1.6em}
+/* gold light rays turning behind the content */
+.card.crown .c-rays{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;
+  -webkit-mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%);mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%)}
+.card.crown .c-rays::before{content:"";position:absolute;left:50%;top:30%;width:260%;aspect-ratio:1;translate:-50% -50%;will-change:transform;
+  background:repeating-conic-gradient(from 0deg,rgba(255,206,110,.24) 0 4deg,rgba(255,255,255,0) 4deg 14deg);animation:wo-spin 22s linear infinite}
+/* a gold shine sweeping across */
+.card.crown .c-shine{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.crown .c-shine::before{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;left:-60%;will-change:transform;
+  background:linear-gradient(90deg,rgba(255,240,200,0),rgba(255,240,200,.55) 45%,rgba(255,255,255,.85) 50%,rgba(255,240,200,.55) 55%,rgba(255,240,200,0));
+  mix-blend-mode:overlay;animation:r-shine 3.6s .6s cubic-bezier(.5,0,.3,1) infinite}
+/* gold dust rising through the card */
+.card.crown .c-dust{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.crown .c-dust b{position:absolute;left:var(--l);bottom:-6%;width:var(--w);height:var(--w);border-radius:50%;background:#FFE08A;box-shadow:0 0 .4em #FFC94A;opacity:0;
+  will-change:transform,opacity;animation:g-mote var(--s) var(--t) ease-in infinite}
+.card.crown .spark{background:#FFF6D8;filter:drop-shadow(0 0 .25em rgba(255,196,80,.95))}
+/* in the Vault grid the frame, rays and trim hold still and only a little dust rises; big cards get everything */
+.card.mini.crown .c-rays::before{animation:none}
+.card.mini.crown .crown-ic::after,.card.mini.crown .c-dust b:nth-child(n+6){display:none}
+/* the reveal for a Crown card: black velvet curtains, gold dust, the worth beating like a heart, then the curtains open,
+   a gold flash, the card drops, the crown lands on it and gold rains down */
+.walkout.crown{--rb:linear-gradient(100deg,#B8862B,#FFF3C4 30%,#E9C46A 50%,#FFF3C4 70%,#B8862B);color:#FFF1CC}
+.walkout.crown .wo-sky{background:radial-gradient(120% 70% at 50% 34%,#3A2C12 0%,#17110A 38%,#050403 75%)}
+.walkout.crown .wo-rays{background:repeating-conic-gradient(from 0deg,rgba(255,206,110,.55) 0 4deg,rgba(255,206,110,0) 4deg 12deg)}
+.walkout.crown .wo-hint small,.walkout.crown .wo-tap{color:#C9A55A}
+.walkout.crown .wo-hint b{color:#FFF1CC}
+.walkout.crown.p3:not(.p4) .h3 b{animation:c-beat .8s ease-in-out infinite}
+@keyframes c-beat{0%,100%{transform:scale(1)}15%{transform:scale(1.08)}30%{transform:scale(1)}45%{transform:scale(1.05)}}
+.walkout.crown .wo-cloud{filter:drop-shadow(0 0 22px rgba(0,0,0,.8))}
+.walkout.crown .wo-cloud.l,.walkout.crown .wo-cloud.r{background:linear-gradient(90deg,rgba(0,0,0,0) 0 86%,#E9C46A 94%,#FFF3C4 95.5%,#7A5A1E 97%,rgba(0,0,0,0) 97.2%),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 10px,rgba(0,0,0,.3) 10px 26px),linear-gradient(90deg,#0B0906 0 94%,rgba(11,9,6,0) 94.1%)}
+.walkout.crown .wo-cloud.b{display:none}
+.walkout.crown .wo-hint{z-index:2}
+.walkout.crown.p0 .wo-cloud.l{transform:translateX(-30%)}
+.walkout.crown.p0 .wo-cloud.r{transform:translateX(30%) scaleX(-1)}
+.walkout.crown.p3 .wo-cloud.l{transform:translateX(-14%)}
+.walkout.crown.p3 .wo-cloud.r{transform:translateX(14%) scaleX(-1)}
+.walkout.crown.p4 .wo-cloud.l{transform:translateX(-100%)}
+.walkout.crown.p4 .wo-cloud.r{transform:translateX(100%) scaleX(-1)}
+.walkout.crown .wo-flash{background:radial-gradient(circle at 50% 45%,#FFF8E1,rgba(255,214,120,.85) 40%,rgba(255,200,90,0) 75%)}
+.walkout.crown .wo-sparks i{background:#FFE7A0;filter:drop-shadow(0 0 4px rgba(255,190,60,.95))}
+.walkout.crown .wo-tier small{display:block;margin-top:6px;font-family:var(--body,system-ui,sans-serif);font-size:13px;font-weight:600;color:#C9A55A;letter-spacing:.02em}
+.wo-glow{position:absolute;left:50%;top:46%;width:130vmin;height:130vmin;margin:-65vmin 0 0 -65vmin;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,206,100,.5),rgba(255,206,100,.12) 40%,rgba(255,206,100,0) 65%);opacity:0;transition:opacity .9s}
+.walkout.p4 .wo-glow{opacity:1;animation:c-glow 3.2s 1s ease-in-out infinite}
+@keyframes c-glow{50%{transform:scale(1.12)}}
+.wo-dust,.wo-rain{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.wo-dust{z-index:1}
+.wo-dust i{position:absolute;left:var(--l);bottom:-4%;width:var(--w);height:var(--w);border-radius:50%;background:#FFE08A;box-shadow:0 0 6px #FFC94A;opacity:0;
+  will-change:transform,opacity;animation:c-rise var(--s) var(--t) ease-in infinite}
+@keyframes c-rise{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}80%{opacity:.6}100%{opacity:0;transform:translate(14px,-105vh)}}
+.wo-rain{z-index:4}
+.wo-rain i{position:absolute;top:-4%;left:var(--l);width:var(--w);height:calc(var(--w) * .45);border-radius:1px;background:linear-gradient(90deg,#8C6420,#FFF3C4 45%,#E9C46A 60%,#B8862B);opacity:0;will-change:transform,opacity}
+.walkout.p4 .wo-rain i{animation:c-rain var(--s) calc(var(--d) + .35s) cubic-bezier(.35,.1,.6,1) infinite}
+@keyframes c-rain{0%{opacity:0;transform:translate(0,0) rotate(0)}8%{opacity:1}85%{opacity:.9}100%{opacity:0;transform:translate(var(--x),110vh) rotate(var(--r))}}
+.walkout.p4 .wo-card .card.crown .crown-ic{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,c-float 3.6s 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.card.crown,.card.crown .crown-ic,.card.crown .crown-ic::after,.card.crown .c-rays::before,.card.crown .c-shine::before,.card.crown .card-top .tier{animation:none}.card.crown .c-dust{display:none}}
+/* ===== /CROWN */
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -1088,7 +1178,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="9ea2fc71";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=9ea2fc71"></script>
+<script>(function(){var V="1545254d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=1545254d"></script>
 </body>
 </html>
