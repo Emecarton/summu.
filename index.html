@@ -344,8 +344,8 @@ html,body{height:100%}
 .profile .av svg{width:38px;height:38px;color:#fff}
 
 /* Card game: 7 rarity tiers, minted cards, Vault, Hunts, trophies. Five tabs: Vault, Dex, Scan, Hunts, Me. */
-.phone{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A}
-.phone[data-look="light"]{--common:#7A766F;--uncommon:#1F9D6B;--rare:#2C93D8;--epic:#7A3CFF;--legendary:#D9861A;--mythic:#E0335C;--grail:#B8892A;--crown:#A9781C}
+.phone{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A;--ruby:#E0115F}
+.phone[data-look="light"]{--common:#7A766F;--uncommon:#1F9D6B;--rare:#2C93D8;--epic:#7A3CFF;--legendary:#D9861A;--mythic:#E0335C;--grail:#B8892A;--crown:#A9781C;--ruby:#B00D49}
 .phone[data-look="light"] .rar{color:#fff}
 .phone[data-look="light"] .rar[style*="grail"],.phone[data-look="light"] .rar[style*="legendary"]{color:#1C1C1B}
 .tabs{grid-template-columns:repeat(5,1fr)}
@@ -356,7 +356,7 @@ html,body{height:100%}
 .ptspill b{margin:0 1px}
 
 /* The card. Sizes are in em so one design scales from the big reveal to the small Vault grid. */
-.card{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A;
+.card{--common:#A8A49E;--uncommon:#3CC48D;--rare:#3AA8F0;--epic:#A97BFF;--legendary:#FFB23E;--mythic:#FF5277;--grail:#FFE29A;--crown:#E9C46A;--ruby:#E0115F;
   position:relative;display:block;width:100%;border-radius:1.1em;padding:.42em;color:#fff;text-align:left;isolation:isolate;overflow:hidden;
   background:linear-gradient(155deg,color-mix(in srgb,var(--c) 72%,#fff),color-mix(in srgb,var(--c) 62%,#000) 55%,color-mix(in srgb,var(--c) 85%,#fff));
   box-shadow:0 .9em 1.8em -.9em color-mix(in srgb,var(--c) 75%,transparent),0 0 0 1px rgba(0,0,0,.35)}
@@ -840,6 +840,84 @@ form.onb-body{margin:0}
 .walkout.p4 .wo-card .card.crown .crown-ic{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,c-float 3.6s 1.8s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.card.crown,.card.crown .crown-ic,.card.crown .crown-ic::after,.card.crown .c-rays::before,.card.crown .c-shine::before,.card.crown .card-top .tier{animation:none}.card.crown .c-dust{display:none}}
 /* ===== /CROWN */
+/* ===== RUBY (Eme, 2026-10-19: "one for the cards that cost more than a million, a red gem frame and red diamonds falling, make your best").
+   Ruby cards ($1M and up) are deep crimson in a frame of cut rubies, with a big ruby in a gold setting on top, a ruby and gold
+   trim, red light rays, a shine and red diamonds falling through the card. Animations only move or fade things. */
+.card.ruby,.card.angelic.ruby,.card.big.angelic.ruby{--rg2:linear-gradient(135deg,#5A0414,#E0115F 25%,#FF6B8B 40%,#9B0A2A 60%,#FF3D6A 80%,#5A0414);
+  background:var(--rg2);color:#FFEFF2;box-shadow:0 1.2em 2.2em -1em rgba(160,10,40,.75),0 0 1.6em -.2em rgba(255,40,90,.6)}
+.card.ruby .card-in{background:repeating-linear-gradient(45deg,rgba(255,80,120,.06) 0 1px,transparent 1px 14px),repeating-linear-gradient(-45deg,rgba(255,80,120,.06) 0 1px,transparent 1px 14px),
+  radial-gradient(130% 75% at 50% 14%,#4A0A16,#1E0409 52%,#0A0103)}
+.card.ruby .card-in::before{background:conic-gradient(from var(--ga),#7A0A20,#FF5A7A,#E9C46A,#FF2E5C,#FFF0F3,#B0102E,#7A0A20);padding:.16em}
+.card.big.ruby{animation:g-turn 5s linear infinite}
+.card.ruby .card-in>*:not(.ru-rays){position:relative;z-index:1}
+.card.ruby .card-top .tier{background:linear-gradient(90deg,#FF2E5C,#FFD3DC 30%,#E0115F 50%,#FFD3DC 70%,#FF2E5C) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.card.big.ruby .card-top .tier{animation:g-text 3s linear infinite}
+.card.ruby .card-top .no,.card.ruby .card-stats small,.card.ruby .card-foot{color:rgba(255,150,170,.85)}
+.card.ruby .card-name span{color:rgba(255,230,235,.75)}
+.card.ruby .card-foot span:first-child{color:#FFEFF2}
+.card.ruby .card-stats span{background:rgba(255,60,100,.1);box-shadow:inset 0 0 0 1px rgba(255,90,130,.22)}
+.card.ruby .card-stats b{color:#FFD3DC}
+.card.ruby .art{border:.16em solid transparent;background:linear-gradient(#0A0103,#0A0103) padding-box,var(--rg2) border-box;box-shadow:0 0 1em -.1em rgba(255,40,90,.65)}
+.card.ruby .art .crop{background:#0A0103}
+.card.ruby .holo{background:linear-gradient(115deg,transparent 22%,rgba(255,120,150,.5) 38%,rgba(255,235,240,.6) 50%,rgba(255,80,120,.5) 62%,transparent 78%);background-size:260% 260%;mix-blend-mode:soft-light;opacity:.55}
+/* the frame: cut rubies all round the edge, the card covers their inner half */
+.card.ruby .ru-frame{position:absolute;inset:-.78em;z-index:-1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpolygon points=%2722.16,16.21 16.21,22.16 7.79,22.16 1.84,16.21 1.84,7.79 7.79,1.84 16.21,1.84 22.16,7.79%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27 stroke-width=%27.8%27/%3E%3Cpolygon points=%2717.54,14.30 14.30,17.54 9.70,17.54 6.46,14.30 6.46,9.70 9.70,6.46 14.30,6.46 17.54,9.70%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.5%27/%3E%3Cpath d=%27M12 1v5M12 18v5M1 12h5M18 12h5M4.2 4.2l3.6 3.6M16.2 16.2l3.6 3.6M19.8 4.2l-3.6 3.6M7.8 16.2l-3.6 3.6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.5%27/%3E%3Ccircle cx=%279%27 cy=%278.5%27 r=%271.3%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3C/svg%3E") 0 0/1.55em 1.55em round no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpolygon points=%2722.16,16.21 16.21,22.16 7.79,22.16 1.84,16.21 1.84,7.79 7.79,1.84 16.21,1.84 22.16,7.79%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27 stroke-width=%27.8%27/%3E%3Cpolygon points=%2717.54,14.30 14.30,17.54 9.70,17.54 6.46,14.30 6.46,9.70 9.70,6.46 14.30,6.46 17.54,9.70%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.5%27/%3E%3Cpath d=%27M12 1v5M12 18v5M1 12h5M18 12h5M4.2 4.2l3.6 3.6M16.2 16.2l3.6 3.6M19.8 4.2l-3.6 3.6M7.8 16.2l-3.6 3.6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.5%27/%3E%3Ccircle cx=%279%27 cy=%278.5%27 r=%271.3%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3C/svg%3E") 0 100%/1.55em 1.55em round no-repeat,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpolygon points=%2722.16,16.21 16.21,22.16 7.79,22.16 1.84,16.21 1.84,7.79 7.79,1.84 16.21,1.84 22.16,7.79%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27 stroke-width=%27.8%27/%3E%3Cpolygon points=%2717.54,14.30 14.30,17.54 9.70,17.54 6.46,14.30 6.46,9.70 9.70,6.46 14.30,6.46 17.54,9.70%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.5%27/%3E%3Cpath d=%27M12 1v5M12 18v5M1 12h5M18 12h5M4.2 4.2l3.6 3.6M16.2 16.2l3.6 3.6M19.8 4.2l-3.6 3.6M7.8 16.2l-3.6 3.6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.5%27/%3E%3Ccircle cx=%279%27 cy=%278.5%27 r=%271.3%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3C/svg%3E") 0 0/1.55em 1.55em no-repeat round,url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpolygon points=%2722.16,16.21 16.21,22.16 7.79,22.16 1.84,16.21 1.84,7.79 7.79,1.84 16.21,1.84 22.16,7.79%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27 stroke-width=%27.8%27/%3E%3Cpolygon points=%2717.54,14.30 14.30,17.54 9.70,17.54 6.46,14.30 6.46,9.70 9.70,6.46 14.30,6.46 17.54,9.70%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.5%27/%3E%3Cpath d=%27M12 1v5M12 18v5M1 12h5M18 12h5M4.2 4.2l3.6 3.6M16.2 16.2l3.6 3.6M19.8 4.2l-3.6 3.6M7.8 16.2l-3.6 3.6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.5%27/%3E%3Ccircle cx=%279%27 cy=%278.5%27 r=%271.3%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3C/svg%3E") 100% 0/1.55em 1.55em no-repeat round;
+  filter:drop-shadow(0 0 .3em rgba(255,30,80,.85)) drop-shadow(0 0 .9em rgba(255,60,100,.45));animation:r-breathe 4s ease-in-out infinite}
+.card.mini.ruby .ru-frame{inset:-.7em}
+/* the big ruby on top, floating, with a glint */
+.card.ruby .ru-gem{position:absolute;top:-1.85em;left:50%;z-index:5;width:3.1em;height:3.1em;margin-left:-1.55em;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3ClinearGradient id=%27a%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.45%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2722.5%27 fill=%27url%28%23a%29%27 stroke=%27%237A5A1E%27/%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2719.5%27 fill=%27%233A0410%27/%3E%3Cpolygon points=%2740.63,30.89 30.89,40.63 17.11,40.63 7.37,30.89 7.37,17.11 17.11,7.37 30.89,7.37 40.63,17.11%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27/%3E%3Cpolygon points=%2732.78,27.64 27.64,32.78 20.36,32.78 15.22,27.64 15.22,20.36 20.36,15.22 27.64,15.22 32.78,20.36%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M24 6v8.5M24 33.5V42M6 24h8.5M33.5 24H42M11.3 11.3l6 6M30.7 30.7l6 6M36.7 11.3l-6 6M17.3 30.7l-6 6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.7%27/%3E%3Ccircle cx=%2718%27 cy=%2716.5%27 r=%272.4%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3Ccircle cx=%2724%27 cy=%271.8%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2724%27 cy=%2746.2%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%271.8%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2746.2%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 .45em rgba(255,40,90,.95)) drop-shadow(0 .15em .2em rgba(60,0,10,.5));animation:c-float 3.4s ease-in-out infinite}
+.card.ruby .ru-gem::after{content:"";position:absolute;top:10%;left:22%;width:1em;height:1em;background:#fff;
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:r-glint 3.4s .6s ease-in-out infinite}
+.card.mini.ruby .ru-gem{top:-1.7em}
+.card.big.ruby,.mint .card.big.ruby{margin-top:2.1em}
+/* red light rays turning behind the content */
+.card.ruby .ru-rays{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;
+  -webkit-mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%);mask:radial-gradient(70% 55% at 50% 32%,#000 30%,transparent 100%)}
+.card.ruby .ru-rays::before{content:"";position:absolute;left:50%;top:30%;width:260%;aspect-ratio:1;translate:-50% -50%;will-change:transform;
+  background:repeating-conic-gradient(from 0deg,rgba(255,60,100,.26) 0 4deg,rgba(255,255,255,0) 4deg 14deg);animation:wo-spin 20s linear infinite}
+/* a shine sweeping across */
+.card.ruby .ru-shine{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.ruby .ru-shine::before{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;left:-60%;will-change:transform;
+  background:linear-gradient(90deg,rgba(255,220,230,0),rgba(255,220,230,.55) 45%,rgba(255,255,255,.85) 50%,rgba(255,220,230,.55) 55%,rgba(255,220,230,0));
+  mix-blend-mode:overlay;animation:r-shine 3.4s .4s cubic-bezier(.5,0,.3,1) infinite}
+/* red diamonds falling through the card */
+.card.ruby .ru-fall{position:absolute;inset:0;z-index:4;border-radius:1.1em;overflow:hidden;pointer-events:none}
+.card.ruby .ru-fall b{position:absolute;left:var(--l);top:-8%;width:var(--w);height:calc(var(--w) * .92);background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 22%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD3DC%27/%3E%3Cstop offset=%27.35%27 stop-color=%27%23FF2E5C%27/%3E%3Cstop offset=%271%27 stop-color=%27%237A0418%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M6 1h12l5 6-11 14L1 7Z%27 fill=%27url%28%23g%29%27 stroke=%27%235A0414%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M1 7h22M6 1l3 6 3-6 3 6 3-6M9 7l3 14 3-14%27 stroke=%27%23FFB3C3%27 stroke-opacity=%27.7%27 stroke-width=%27.6%27 fill=%27none%27/%3E%3C/svg%3E") center/contain no-repeat;opacity:0;
+  filter:drop-shadow(0 0 .2em rgba(255,40,90,.9));will-change:transform,opacity;animation:r-fall var(--s) var(--t) linear infinite}
+.card.ruby .spark{background:#FFE3EA;filter:drop-shadow(0 0 .25em rgba(255,40,90,.95))}
+/* in the Vault grid the frame and rays hold still and fewer diamonds fall; big cards get everything */
+.card.mini.ruby .ru-frame,.card.mini.ruby .ru-rays::before{animation:none}
+.card.mini.ruby .ru-gem::after,.card.mini.ruby .ru-fall b:nth-child(n+5){display:none}
+/* the reveal for a Ruby card: a crimson dark, a giant ruby glowing and beating above the hints, shaking as the worth counts
+   up into the millions, then it shatters into red diamonds, a red flash, the card drops, its ruby lands and red diamonds rain */
+.walkout.ruby{--rb:linear-gradient(100deg,#FF2E5C,#FFD3DC 35%,#E0115F 55%,#FFD3DC 75%,#FF2E5C);color:#FFE9EE}
+.walkout.ruby .wo-sky{background:radial-gradient(120% 70% at 50% 30%,#5A0718 0%,#1E0308 42%,#050002 80%)}
+.walkout.ruby .wo-rays{background:repeating-conic-gradient(from 0deg,rgba(255,60,100,.6) 0 4deg,rgba(255,60,100,0) 4deg 12deg)}
+.walkout.ruby .wo-cloud{display:none}
+.walkout.ruby .wo-hint{z-index:2;top:52%}
+.walkout.ruby .wo-hint small,.walkout.ruby .wo-tap{color:#FF8FA6}
+.walkout.ruby .wo-hint b{color:#FFE9EE}
+.walkout.ruby.p3:not(.p4) .h3 b{animation:c-beat .7s ease-in-out infinite}
+.wo-bigem{position:absolute;left:50%;top:30%;z-index:2;width:150px;height:150px;margin:-75px 0 0 -75px;pointer-events:none;opacity:0;transform:scale(.2) rotate(-40deg);
+  transition:opacity .6s,transform 1s cubic-bezier(.2,1.3,.3,1)}
+.wo-bigem i{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3ClinearGradient id=%27a%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.45%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2722.5%27 fill=%27url%28%23a%29%27 stroke=%27%237A5A1E%27/%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2719.5%27 fill=%27%233A0410%27/%3E%3Cpolygon points=%2740.63,30.89 30.89,40.63 17.11,40.63 7.37,30.89 7.37,17.11 17.11,7.37 30.89,7.37 40.63,17.11%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27/%3E%3Cpolygon points=%2732.78,27.64 27.64,32.78 20.36,32.78 15.22,27.64 15.22,20.36 20.36,15.22 27.64,15.22 32.78,20.36%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M24 6v8.5M24 33.5V42M6 24h8.5M33.5 24H42M11.3 11.3l6 6M30.7 30.7l6 6M36.7 11.3l-6 6M17.3 30.7l-6 6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.7%27/%3E%3Ccircle cx=%2718%27 cy=%2716.5%27 r=%272.4%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3Ccircle cx=%2724%27 cy=%271.8%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2724%27 cy=%2746.2%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%271.8%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2746.2%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 0 18px rgba(255,40,90,.95)) drop-shadow(0 0 50px rgba(255,40,90,.5));animation:ru-beat 1.6s ease-in-out infinite}
+.walkout.ruby.p1 .wo-bigem{opacity:1;transform:none}
+.walkout.ruby.p3 .wo-bigem i{animation:ru-shake .12s linear infinite}
+.walkout.ruby.p4 .wo-bigem{opacity:0;transform:scale(2.6);transition:opacity .35s,transform .45s ease-out}
+@keyframes ru-beat{0%,100%{transform:scale(1)}12%{transform:scale(1.07)}24%{transform:scale(1)}36%{transform:scale(1.04)}}
+@keyframes ru-shake{0%{transform:translate(0,0) scale(1.05)}25%{transform:translate(-3px,2px) scale(1.06)}50%{transform:translate(3px,-2px) scale(1.05)}75%{transform:translate(-2px,-3px) scale(1.07)}100%{transform:translate(0,0) scale(1.05)}}
+.walkout.ruby .wo-flash{background:radial-gradient(circle at 50% 40%,#FFF0F3,rgba(255,60,100,.85) 40%,rgba(255,40,90,0) 75%)}
+.walkout.ruby .wo-sparks{top:30%}
+.walkout.ruby .wo-sparks i{width:22px;height:20px;margin:-10px;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 22%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD3DC%27/%3E%3Cstop offset=%27.35%27 stop-color=%27%23FF2E5C%27/%3E%3Cstop offset=%271%27 stop-color=%27%237A0418%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M6 1h12l5 6-11 14L1 7Z%27 fill=%27url%28%23g%29%27 stroke=%27%235A0414%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M1 7h22M6 1l3 6 3-6 3 6 3-6M9 7l3 14 3-14%27 stroke=%27%23FFB3C3%27 stroke-opacity=%27.7%27 stroke-width=%27.6%27 fill=%27none%27/%3E%3C/svg%3E") center/contain no-repeat;clip-path:none;filter:drop-shadow(0 0 5px rgba(255,40,90,.95))}
+.walkout.ruby .wo-glow{background:radial-gradient(circle,rgba(255,40,90,.5),rgba(255,40,90,.12) 40%,rgba(255,40,90,0) 65%)}
+.walkout.ruby .wo-dust i{background:#FF7A95;box-shadow:0 0 6px #FF2E5C}
+.walkout.ruby .wo-rain i{width:calc(var(--w) * 1.2);height:calc(var(--w) * 1.1);border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 22%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFD3DC%27/%3E%3Cstop offset=%27.35%27 stop-color=%27%23FF2E5C%27/%3E%3Cstop offset=%271%27 stop-color=%27%237A0418%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d=%27M6 1h12l5 6-11 14L1 7Z%27 fill=%27url%28%23g%29%27 stroke=%27%235A0414%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M1 7h22M6 1l3 6 3-6 3 6 3-6M9 7l3 14 3-14%27 stroke=%27%23FFB3C3%27 stroke-opacity=%27.7%27 stroke-width=%27.6%27 fill=%27none%27/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 0 4px rgba(255,40,90,.8))}
+.walkout.ruby .wo-tier small{display:block;margin-top:6px;font-family:var(--body,system-ui,sans-serif);font-size:13px;font-weight:600;color:#FF8FA6;letter-spacing:.02em}
+.walkout.p4 .wo-card .card.ruby .ru-gem{animation:wo-halo 1.3s .5s cubic-bezier(.2,1.3,.3,1) backwards,c-float 3.4s 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.card.ruby,.card.ruby .ru-frame,.card.ruby .ru-gem,.card.ruby .ru-gem::after,.card.ruby .ru-rays::before,.card.ruby .ru-shine::before,.card.ruby .card-top .tier{animation:none}.card.ruby .ru-fall{display:none}}
+/* ===== /RUBY */
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -1178,7 +1256,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="1545254d";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=1545254d"></script>
+<script>(function(){var V="e28d2e12";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=e28d2e12"></script>
 </body>
 </html>
