@@ -934,6 +934,100 @@ form.onb-body{margin:0}
 .wo-card .card.big.ruby{width:17.7em}
 .wo-rain{z-index:2}
 /* ===== /REVEAL-FIT */
+/* ===== RUBY-REVEAL2 (Eme, 2026-10-21: "ruby is just meh, make it more special and shiny, a piece over a million dollars").
+   The Ruby card gets a pulsing red aura and glitter. Its reveal is the longest one: a red laser line, "One in a million",
+   the giant ruby rises with ten small rubies orbiting it and red and gold rays turning both ways, the hints come, the worth
+   counts up and the screen jolts when it passes a million, the ruby shakes, cracks and beams light out of it, then shatters
+   into 48 red diamonds with a flash and two rings, and the card spins down. Everything moves or fades only. */
+.card.ruby .ru-aura{position:absolute;inset:-3.2em;z-index:-2;border-radius:2.4em;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,40,90,.55),rgba(255,40,90,.18) 55%,rgba(255,40,90,0));animation:ru-aura 2.6s ease-in-out infinite}
+@keyframes ru-aura{0%,100%{opacity:.55;transform:scale(.97)}50%{opacity:1;transform:scale(1.04)}}
+.card.ruby .ru-glit{position:absolute;inset:0;z-index:5;border-radius:1.1em;pointer-events:none}
+.card.ruby .ru-glit b{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--w);background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  filter:drop-shadow(0 0 .2em rgba(255,60,110,1));opacity:0;will-change:transform,opacity;animation:ru-twk 2.6s var(--t) ease-in-out infinite}
+@keyframes ru-twk{0%,100%{opacity:0;transform:scale(.2) rotate(0)}45%{opacity:1;transform:scale(1.15) rotate(45deg)}70%{opacity:0;transform:scale(.3) rotate(90deg)}}
+.card.mini.ruby .ru-aura,.card.mini.ruby .ru-glit b:nth-child(n+4){display:none}
+.card.ruby .ru-shine::before{animation-duration:2.6s}
+
+/* an outline in the sky's colour so the shake never shows the page behind */
+.walkout.ruby{outline:40px solid #0B0103}
+.walkout.ruby.mil{animation:ru-quake .55s ease-out}
+.walkout.ruby.pc{animation:ru-rumble .09s linear infinite}
+.walkout.ruby.p4{animation:ru-quake .7s ease-out}
+.walkout.ruby.skip{animation:none}
+@keyframes ru-quake{0%{transform:translate(0,0)}15%{transform:translate(-9px,5px)}30%{transform:translate(8px,-6px)}45%{transform:translate(-6px,-4px)}60%{transform:translate(5px,4px)}80%{transform:translate(-2px,2px)}100%{transform:translate(0,0)}}
+@keyframes ru-rumble{0%,100%{transform:translate(0,0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,-2px)}}
+/* a second set of gold rays turning the other way */
+.wo-rays2{position:absolute;left:50%;top:30%;width:220vmax;height:220vmax;margin:-110vmax 0 0 -110vmax;opacity:0;transition:opacity 1.2s;pointer-events:none;
+  background:repeating-conic-gradient(from 7deg,rgba(255,214,130,.4) 0 2deg,rgba(255,214,130,0) 2deg 16deg);
+  -webkit-mask:radial-gradient(circle,#000 0,transparent 30%);mask:radial-gradient(circle,#000 0,transparent 30%);animation:ru-spinr 40s linear infinite}
+@keyframes ru-spinr{to{transform:rotate(-360deg)}}
+.walkout.ruby .wo-rays{top:30%;opacity:0}
+.walkout.ruby.p1 .wo-rays,.walkout.ruby.p1 .wo-rays2{opacity:.75}
+.walkout.ruby.p4 .wo-rays{top:46%;opacity:1;animation-duration:12s}
+.walkout.ruby.p4 .wo-rays2{top:46%;opacity:.9}
+/* the laser line and the warning */
+.wo-laser{position:absolute;left:0;right:0;top:40%;height:3px;z-index:3;pointer-events:none;background:linear-gradient(90deg,transparent,#FF2E5C 20%,#fff 50%,#FF2E5C 80%,transparent);
+  box-shadow:0 0 14px 2px rgba(255,46,92,.9);opacity:0;transform:scaleX(0)}
+.walkout.ruby.p0 .wo-laser{animation:ru-laser 1.3s .05s cubic-bezier(.3,.7,.3,1) forwards}
+@keyframes ru-laser{0%{opacity:1;transform:scaleX(0)}45%{opacity:1;transform:scaleX(1)}70%{opacity:1;transform:scaleX(1) scaleY(1)}100%{opacity:0;transform:scaleX(1) scaleY(18)}}
+.wo-warn{position:absolute;left:16px;right:16px;top:40%;z-index:3;text-align:center;opacity:0;transform:translateY(-50%) scale(1.7);pointer-events:none;
+  transition:opacity .5s .8s,transform .9s .8s cubic-bezier(.2,1.2,.3,1)}
+.wo-warn b{display:block;font-size:44px;font-weight:700;line-height:1.05;letter-spacing:.01em}
+.wo-warn small{display:block;margin-top:12px;font-family:var(--body,system-ui,sans-serif);font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#FF8FA6}
+.walkout.ruby.rw .wo-warn{opacity:1;transform:translateY(-50%)}
+.walkout.ruby.p1 .wo-warn{opacity:0;transform:translateY(-50%) scale(.9);transition:opacity .35s,transform .4s}
+/* the giant ruby rises from below and beats; it shakes on the worth, harder past a million, then cracks and shatters */
+.walkout.ruby .wo-bigem{transform:translateY(55vh) scale(.5);transition:opacity .5s,transform 1.3s cubic-bezier(.2,1.1,.3,1)}
+.walkout.ruby.p1 .wo-bigem{opacity:1;transform:none}
+.walkout.ruby.mil .wo-bigem i{animation:ru-shake .07s linear infinite}
+.wo-bigem::after{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,240,245,.9) 30%,rgba(255,80,120,0) 70%);opacity:0;transform:scale(.6);transition:opacity .7s,transform .7s}
+.wo-bigem::before{content:"";position:absolute;inset:14%;z-index:1;opacity:0;transition:opacity .25s;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 50 30 18M50 50l28-24M50 50l36 10M50 50l12 38M50 50 16 70M50 50 8 44M38 31l-8-4M66 38l6-10M72 56l12 6M58 74l-8 10M30 61l-10-2' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 0 6px #fff)}
+.walkout.ruby.pc .wo-bigem::before{opacity:1}
+.walkout.ruby.pc .wo-bigem::after{opacity:1;transform:scale(1.15)}
+.walkout.ruby.p4 .wo-bigem{opacity:0;transform:scale(3);transition:opacity .3s,transform .4s ease-out}
+/* ten small rubies orbiting the giant one */
+.wo-orbit{position:absolute;left:50%;top:30%;z-index:2;width:0;height:0;opacity:0;transform:scale(.3);transition:opacity .8s .5s,transform 1.2s .5s cubic-bezier(.2,1.2,.3,1);pointer-events:none}
+.wo-orbit::before{content:"";position:absolute;inset:0;animation:wo-spin 7s linear infinite}
+.wo-orbit i{position:absolute;left:-11px;top:-11px;width:22px;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27 cx=%27.38%27 cy=%27.32%27 r=%27.75%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFC2D0%27/%3E%3Cstop offset=%27.4%27 stop-color=%27%23E0115F%27/%3E%3Cstop offset=%271%27 stop-color=%27%235E0418%27/%3E%3C/radialGradient%3E%3ClinearGradient id=%27a%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23FFF3C4%27/%3E%3Cstop offset=%27.45%27 stop-color=%27%23E9C46A%27/%3E%3Cstop offset=%271%27 stop-color=%27%238C6420%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2722.5%27 fill=%27url%28%23a%29%27 stroke=%27%237A5A1E%27/%3E%3Ccircle cx=%2724%27 cy=%2724%27 r=%2719.5%27 fill=%27%233A0410%27/%3E%3Cpolygon points=%2740.63,30.89 30.89,40.63 17.11,40.63 7.37,30.89 7.37,17.11 17.11,7.37 30.89,7.37 40.63,17.11%27 fill=%27url%28%23g%29%27 stroke=%27%234A0312%27/%3E%3Cpolygon points=%2732.78,27.64 27.64,32.78 20.36,32.78 15.22,27.64 15.22,20.36 20.36,15.22 27.64,15.22 32.78,20.36%27 fill=%27%23FFD7E1%27 fill-opacity=%27.35%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.6%27 stroke-width=%27.7%27/%3E%3Cpath d=%27M24 6v8.5M24 33.5V42M6 24h8.5M33.5 24H42M11.3 11.3l6 6M30.7 30.7l6 6M36.7 11.3l-6 6M17.3 30.7l-6 6%27 stroke=%27%23FF9DB4%27 stroke-opacity=%27.5%27 stroke-width=%27.7%27/%3E%3Ccircle cx=%2718%27 cy=%2716.5%27 r=%272.4%27 fill=%27%23fff%27 fill-opacity=%27.85%27/%3E%3Ccircle cx=%2724%27 cy=%271.8%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2724%27 cy=%2746.2%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%271.8%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3Ccircle cx=%2746.2%27 cy=%2724%27 r=%271.8%27 fill=%27%23FFF3C4%27/%3E%3C/svg%3E") center/contain no-repeat;
+  transform:rotate(calc(var(--i) * 36deg)) translateY(-118px) rotate(calc(var(--i) * -36deg));filter:drop-shadow(0 0 6px rgba(255,40,90,.95))}
+.walkout.ruby.p1 .wo-orbit{opacity:1;transform:none;animation:wo-spin 7s 1.7s linear infinite}
+.walkout.ruby.pc .wo-orbit{animation-duration:1.4s}
+.walkout.ruby.p4 .wo-orbit{opacity:0;transform:scale(2.6);transition:opacity .35s,transform .5s ease-out}
+/* beams of light breaking out of the cracked ruby */
+.wo-beams{position:absolute;left:50%;top:30%;z-index:1;width:0;height:0;pointer-events:none}
+.wo-beams i{position:absolute;left:-4px;top:0;width:8px;height:75vmax;transform-origin:50% 0;transform:rotate(var(--a)) scaleY(0);opacity:0;
+  background:linear-gradient(rgba(255,255,255,.95),rgba(255,120,150,.7) 25%,rgba(255,46,92,0) 80%);transition:transform .7s var(--d) cubic-bezier(.2,.9,.3,1),opacity .3s var(--d)}
+.walkout.ruby.pc .wo-beams i{opacity:1;transform:rotate(var(--a)) scaleY(1)}
+.walkout.ruby.p4 .wo-beams i{opacity:0;transition:opacity .5s}
+/* the hints sit under the ruby; the worth glows once it passes a million */
+.walkout.ruby .wo-hint{top:55%}
+.walkout.ruby .wo-hint b{transition:color .3s}
+.walkout.ruby.mil .h3 b{color:#fff}
+.walkout.ruby.mil .h3 small{color:#FFD3DC}
+/* the shatter: big red diamonds flying out of the ruby, a white flash, two rings */
+.walkout.ruby .wo-sparks i{width:28px;height:26px;margin:-13px}
+.walkout.ruby.p4 .wo-sparks i{animation:wo-spark 1.6s var(--d) cubic-bezier(.1,.8,.3,1) forwards}
+.walkout.ruby .wo-flash{background:radial-gradient(circle at 50% 30%,#fff,rgba(255,235,240,.95) 30%,rgba(255,60,100,.75) 55%,rgba(255,40,90,0) 85%)}
+.walkout.ruby.p4 .wo-flash{animation:wo-flash 1.3s ease-out}
+.wo-ring{position:absolute;left:50%;top:30%;z-index:2;width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;border:3px solid rgba(255,140,170,.95);
+  box-shadow:0 0 30px 4px rgba(255,40,90,.85),inset 0 0 24px rgba(255,40,90,.6);opacity:0;pointer-events:none}
+.walkout.ruby.p4 .wo-ring{animation:ru-ring 1.2s cubic-bezier(.1,.7,.3,1) forwards}
+.walkout.ruby.p4 .wo-ring.r2{animation-delay:.22s;border-color:rgba(255,220,150,.9)}
+@keyframes ru-ring{0%{opacity:1;transform:scale(.2)}100%{opacity:0;transform:scale(4)}}
+/* the card spins down from above */
+.walkout.ruby .wo-card{transform:perspective(1100px) translateY(-80vh) scale(.35) rotateY(-720deg)}
+.walkout.ruby.p4 .wo-card{opacity:1;transform:none;transition:transform 1.6s .15s cubic-bezier(.12,.9,.22,1.04),opacity .3s .15s}
+/* sparkles twinkling all over the screen once it lands */
+.wo-twk{position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;transition:opacity .8s 1s}
+.walkout.ruby.p4 .wo-twk{opacity:1}
+.wo-twk i{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--w);background:#fff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  filter:drop-shadow(0 0 5px rgba(255,60,110,1));opacity:0;will-change:transform,opacity;animation:ru-twk 2.4s var(--t) ease-in-out infinite}
+.walkout.ruby .wo-tier{z-index:6}
+.walkout.ruby.skip .wo-warn,.walkout.ruby.skip .wo-laser,.walkout.ruby.skip .wo-beams,.walkout.ruby.skip .wo-ring{display:none}
+/* ===== /RUBY-REVEAL2 */
 
 /* Look: warm black, bone white and one safety orange. Square-ish corners (6px), thin lines instead of glows, no gradients
    on the interface, and motion only where something happens (a card mints, a sheet opens, the 3D model turns). */
@@ -1272,7 +1366,7 @@ h1,h2,h3,.section-title,.wordmark,.logo,.lvlcard .t>b,.bestrow>span>b:first-chil
   <div id="overlay"></div>
   <div id="onb"></div>
 </div>
-<script>(function(){var V="2f02c6b0";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
-<script src="app.js?v=2f02c6b0"></script>
+<script>(function(){var V="fefeca03";try{fetch("version.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(t&&t!==V&&sessionStorage.getItem("summu.reloaded")!==t){sessionStorage.setItem("summu.reloaded",t);location.replace(location.pathname+"?v="+t+location.hash)}}).catch(function(){})}catch(e){}})();</script>
+<script src="app.js?v=fefeca03"></script>
 </body>
 </html>
